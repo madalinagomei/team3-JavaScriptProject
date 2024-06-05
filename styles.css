@@ -1,0 +1,277 @@
+:root {
+  --background-color: #f4f4f4;
+  --text-color: #000;
+  --header-text-color: #fff;
+  --accent-color: #ff6b01;
+  --header-background-color: #333;
+  --link-color: #8c8c8c;
+  --movie-item-background-color: #fff;
+  --border-color: #ddd;
+  --footer-background-color: #333;
+  --footer-text-color: #545454;
+  --time: 250ms;
+  --function-animate: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --accent-color: #ff6b01;
+  --header-background-color: #1e1e1e;
+  --header-text-color: #e0e0e0;
+  --link-color: #8c8c8c;
+  --movie-item-background-color: #1e1e1e;
+  --border-color: #333;
+  --footer-background-color: #1e1e1e;
+  --footer-text-color: #545454;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: var(--header-background-color);
+  color: var(--header-text-color);
+  padding: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.header__title {
+  /* display: none; */
+  font-size: 30px;
+  line-height: 1.17;
+  font-weight: 500;
+  color: var(--header-text-color);
+  cursor: pointer;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+header h1 {
+  margin: 0;
+}
+
+header input {
+  margin-top: 10px;
+  padding: 10px;
+  width: 80%;
+}
+
+.search-form__input {
+  min-width: 280px;
+  color: var(--header-text-color);
+  border: none;
+  border-bottom: 0.5px solid var(--header-text-color);
+  background: 0 0;
+  outline: none;
+  font-size: 14px;
+  line-height: 1.14;
+}
+
+nav a {
+  color: var(--link-color);
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+#main-content {
+  padding: 20px;
+}
+
+#movie-list {
+  /* display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; */
+
+  grid-gap: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  max-width: 618px;
+  margin: auto;
+  display: grid;
+  /* padding: 60px auto; */
+  justify-content: center;
+}
+
+.movie-item {
+  background-color: var(--movie-item-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 200px;
+  text-align: center;
+}
+
+.movie-item img {
+  width: 100%;
+}
+
+.movie-item h3 {
+  margin: 10px 0;
+}
+
+.movie-item p {
+  margin: 0 0 10px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+#movie-details {
+  background-color: var(--movie-item-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px;
+}
+
+footer {
+  background-color: var(--footer-background-color);
+  color: var(--footer-text-color);
+  padding: 10px;
+  text-align: center;
+}
+
+/* Toggle switch styling */
+.switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--link-color);
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--accent-color);
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--border-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
+}
+/* moovie details  */
+
+#movie-details {
+  background-color: var(--movie-item-background-color);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  margin: 20px auto;
+  max-width: 600px;
+  padding: 20px;
+  position: relative;
+}
+
+#movie-details img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+#movie-details h2 {
+  margin-top: 10px;
+}
+
+#movie-details p {
+  margin: 10px 0;
+}
+
+#movie-details button {
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--accent-color);
+  color: white;
+  cursor: pointer;
+}
+
+#movie-details button:hover {
+  background-color: var(--accent-color);
+}
+
+#movie-details .button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+#movie-details .button-group button {
+  flex: 1;
+  margin: 5px;
+}
+/* upward button  */
+
+.upward {
+  position: fixed;
+  bottom: 700px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  background: url(../images/up-btn.png);
+  background-size: cover;
+  z-index: 50;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.5s;
+  /* @media screen and (min-width: 768px) {
+    right: 40px;
+  }
+
+  @media screen and (min-width: 1280 px) {
+    width: 50px;
+    height: 50px;
+  } */
+}
+
+.upward.active {
+  bottom: 25px;
+  visibility: visible;
+  opacity: 1;
+}
