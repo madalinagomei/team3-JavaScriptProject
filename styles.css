@@ -262,7 +262,7 @@ input:checked + .slider:before {
   right: 20px;
   width: 45px;
   height: 45px;
-  background: url(../images/up-btn.png);
+  background: url(./images/up-btn.png);
   background-size: cover;
   z-index: 50;
   cursor: pointer;
