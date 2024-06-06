@@ -269,6 +269,7 @@ input:checked + .slider:before {
   visibility: hidden;
   opacity: 0;
   transition: 0.5s;
+  border: none;
   /* @media screen and (min-width: 768px) {
     right: 40px;
   }
@@ -283,6 +284,7 @@ input:checked + .slider:before {
   bottom: 25px;
   visibility: visible;
   opacity: 1;
+  /* animation: var(--function-animate); */
 }
 #movie-details .button-group .add-to-watched {
   background-color: var(--accent-color);
@@ -303,3 +305,46 @@ input:checked + .slider:before {
   background: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
+
+/* --------------------------pagination------------------------------------- */
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.pagination-item {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 8px 12px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.pagination-item:hover {
+  background-color: darken(var(--accent-color), 10%);
+  /* border: 1px solid var(--accent-color); */
+  color: blue;
+}
+
+.pagination-item.active {
+  background-color: darken(var(--accent-color), 20%);
+  color: blue;
+  font-weight: bold;
+}
+
+#pagination span {
+  display: inline-block;
+  padding: 10px;
+  cursor: default;
+}
+
+.pagination-item.prev,
+.pagination-item.next {
+  font-weight: bold;
+}
+/* ------------------------------------------------------------------------------- */

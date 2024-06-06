@@ -47,21 +47,17 @@
         <!-- movie items insert here -->
       </section>
 
-      <!-- upward button -->
-      <div class="upward active" onclick="scrollTopTop()"></div>
+      <!-- Pagination buttons -->
+      <div id="pagination" class="pagination">
+        <!-- Pagination buttons will be inserted here dynamically by JavaScript -->
+      </div>
 
-      <script>
-        window.addEventListener("scroll", function () {
-          const scroll = document.querySelector(".upward");
-          scroll.classList.toggle("active", window.scrollY > 200);
-        });
-        function scrollTopTop() {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }
-      </script>
+      <!-- upward button -->
+      <button
+        class="upward active"
+        id="upward"
+        onclick="scrollToTop()"
+      ></button>
     </main>
 
     <main id="library-content" class="hidden">

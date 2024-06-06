@@ -16,13 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const queueBtn = document.getElementById("queue-btn");
 
   let currentLibraryView = "watched";
+  let currentPage = 1;
+  let totalPages = 20; // Assume 20 pages initially
 
   // Fetch movies for the homepage
-  fetch(`${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
-    .then((response) => response.json())
-    .then((data) => {
-      displayMovies(data.results);
-    });
+  fetchMovies(currentPage);
 
   // Display movies in the main content
   function displayMovies(movies) {
@@ -31,17 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
       const movieItem = document.createElement("div");
       movieItem.classList.add("movie-item");
       movieItem.innerHTML = `
-            <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
-            <h3>${movie.title}</h3>
-            <p>${movie.release_date.split("-")[0]}</p>
-            <p>${movie.vote_average}</p>
-            <button class="add-to-library" data-id="${
-              movie.id
-            }" data-type="watched">Add to Watched</button>
-            <button class="add-to-library" data-id="${
-              movie.id
-            }" data-type="queue">Add to Queue</button>
-        `;
+        <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+        <p>${movie.release_date.split("-")[0]}</p>
+        <p>${movie.vote_average}</p>
+        <button class="add-to-library" data-id="${
+          movie.id
+        }" data-type="watched">Add to Watched</button>
+        <button class="add-to-library" data-id="${
+          movie.id
+        }" data-type="queue">Add to Queue</button>
+      `;
       movieItem.querySelectorAll(".add-to-library").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -54,6 +52,111 @@ document.addEventListener("DOMContentLoaded", () => {
       movieList.appendChild(movieItem);
     });
   }
+
+  // Function to fetch movies for a given page
+  function fetchMovies(page) {
+    fetch(
+      `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        displayMovies(data.results);
+        updatePagination();
+      });
+  }
+
+  // Function to update pagination
+  function updatePagination() {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = ""; // Clear previous pagination buttons
+
+    // Create pagination buttons
+    const prevButton = createPaginationButton("«", "prev");
+    pagination.appendChild(prevButton);
+
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = createPaginationButton(i, i);
+        if (i === currentPage) {
+          pageButton.classList.add("active");
+        }
+        pagination.appendChild(pageButton);
+      }
+    } else {
+      // Always show the first page button
+      const firstPageButton = createPaginationButton(1, 1);
+      pagination.appendChild(firstPageButton);
+      if (currentPage === 1) {
+        firstPageButton.classList.add("active");
+      }
+
+      if (currentPage > 4) {
+        const ellipsis = document.createElement("span");
+        ellipsis.textContent = "...";
+        pagination.appendChild(ellipsis);
+      }
+
+      const startPage = Math.max(2, currentPage - 2);
+      const endPage = Math.min(totalPages - 1, currentPage + 2);
+
+      for (let i = startPage; i <= endPage; i++) {
+        const pageButton = createPaginationButton(i, i);
+        if (i === currentPage) {
+          pageButton.classList.add("active");
+        }
+        pagination.appendChild(pageButton);
+      }
+
+      if (currentPage < totalPages - 3) {
+        const ellipsis = document.createElement("span");
+        ellipsis.textContent = "...";
+        pagination.appendChild(ellipsis);
+      }
+
+      // Always show the last page button
+      const lastPageButton = createPaginationButton(totalPages, totalPages);
+      pagination.appendChild(lastPageButton);
+      if (currentPage === totalPages) {
+        lastPageButton.classList.add("active");
+      }
+    }
+
+    const nextButton = createPaginationButton("»", "next");
+    pagination.appendChild(nextButton);
+  }
+
+  // Function to create pagination button
+  function createPaginationButton(label, page) {
+    const button = document.createElement("button");
+    button.textContent = label;
+    button.setAttribute("data-page", page);
+    button.classList.add("pagination-item");
+    return button;
+  }
+
+  // Event listener for pagination buttons
+  document
+    .getElementById("pagination")
+    .addEventListener("click", function (event) {
+      const target = event.target;
+      if (target.tagName === "BUTTON") {
+        const page = target.getAttribute("data-page");
+        if (page === "prev") {
+          if (currentPage > 1) {
+            currentPage--;
+            fetchMovies(currentPage);
+          }
+        } else if (page === "next") {
+          if (currentPage < totalPages) {
+            currentPage++;
+            fetchMovies(currentPage);
+          }
+        } else {
+          currentPage = parseInt(page);
+          fetchMovies(currentPage);
+        }
+      }
+    });
 
   // Display movie details
   function displayMovieDetails(movie) {
@@ -197,5 +300,27 @@ document.addEventListener("DOMContentLoaded", () => {
     library = library.filter((movie) => movie.id !== movieToRemove.id);
     localStorage.setItem(type, JSON.stringify(library));
     displayLibrary();
+  }
+});
+
+//btn to top smooth animation
+function scrollToTop() {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+}
+
+// Show/hide the button based on the scroll position
+window.addEventListener("scroll", function () {
+  const scrollToTopBtn = document.getElementById("upward");
+  if (
+    document.documentElement.scrollTop > 300 ||
+    document.body.scrollTop > 300
+  ) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
   }
 });
