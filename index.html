@@ -28,12 +28,13 @@
       <input
         class="search-form__input"
         type="text"
+        id="search-input"
         name="searchQuery"
         placeholder="Movie search"
       />
       <nav>
-        <a href="#" id="home">Home</a>
-        <a href="#" id="my-library">My Library</a>
+        <a href="#" id="home-link">Home</a>
+        <a href="#" id="library-link">My Library</a>
       </nav>
       <label class="switch">
         <input type="checkbox" id="theme-switch" />
@@ -46,27 +47,30 @@
         <!-- movie items insert here -->
       </section>
 
-      <!-- upward button -->
-      <div class="upward active" onclick="scrollTopTop()"></div>
+      <!-- Pagination buttons -->
+      <div id="pagination" class="pagination">
+        <!-- Pagination buttons will be inserted here dynamically by JavaScript -->
+      </div>
 
-      // upward button
-      <script>
-        window.addEventListener("scroll", function () {
-          const scroll = document.querySelector(".upward");
-          scroll.classList.toggle("active", window.scrollY > 200);
-        });
-        function scrollTopTop() {
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-        }
-      </script>
+      <!-- upward button -->
+      <button
+        class="upward active"
+        id="upward"
+        onclick="scrollToTop()"
+      ></button>
+    </main>
+
+    <main id="library-content" class="hidden">
+      <h2>My Library</h2>
+      <button id="watched-btn">Watched</button>
+      <button id="queue-btn">Queue</button>
+      <div id="library-movie-list"></div>
     </main>
 
     <div id="movie-details" class="hidden">
       <!-- movie details insert here -->
     </div>
+    <div id="overlay" class="hidden"></div>
 
     <footer>
       <p>

@@ -4,15 +4,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const imgBaseUrl = "https://image.tmdb.org/t/p/w500";
   const movieList = document.getElementById("movie-list");
   const movieDetails = document.getElementById("movie-details");
+  const overlay = document.getElementById("overlay");
   const searchInput = document.getElementById("search-input");
   const themeSwitch = document.getElementById("theme-switch");
+  const homeLink = document.getElementById("home-link");
+  const libraryLink = document.getElementById("library-link");
+  const mainContent = document.getElementById("main-content");
+  const libraryContent = document.getElementById("library-content");
+  const libraryMovieList = document.getElementById("library-movie-list");
+  const watchedBtn = document.getElementById("watched-btn");
+  const queueBtn = document.getElementById("queue-btn");
+
+  let currentLibraryView = "watched";
+  let currentPage = 1;
+  let totalPages = 20; // Assume 20 pages initially
 
   // Fetch movies for the homepage
-  fetch(`${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=1`)
-    .then((response) => response.json())
-    .then((data) => {
-      displayMovies(data.results);
-    });
+  fetchMovies(currentPage);
 
   // Display movies in the main content
   function displayMovies(movies) {
@@ -21,13 +29,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const movieItem = document.createElement("div");
       movieItem.classList.add("movie-item");
       movieItem.innerHTML = `
-                <img src="${imgBaseUrl + movie.poster_path}" alt="${
-        movie.title
-      }">
-                <h3>${movie.title}</h3>
-                <p>${movie.release_date.split("-")[0]}</p>
-                <p>${movie.vote_average}</p>
-            `;
+        <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+        <p>${movie.release_date.split("-")[0]}</p>
+        <p>${movie.vote_average}</p>
+        <button class="add-to-library" data-id="${
+          movie.id
+        }" data-type="watched">Add to Watched</button>
+        <button class="add-to-library" data-id="${
+          movie.id
+        }" data-type="queue">Add to Queue</button>
+      `;
+      movieItem.querySelectorAll(".add-to-library").forEach((button) => {
+        button.addEventListener("click", (e) => {
+          e.stopPropagation();
+          addToLibrary(movie, button.dataset.type);
+        });
+      });
       movieItem.addEventListener("click", () => {
         displayMovieDetails(movie);
       });
@@ -35,20 +53,153 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Function to fetch movies for a given page
+  function fetchMovies(page) {
+    fetch(
+      `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        displayMovies(data.results);
+        updatePagination();
+      });
+  }
+
+  // Function to update pagination
+  function updatePagination() {
+    const pagination = document.getElementById("pagination");
+    pagination.innerHTML = ""; // Clear previous pagination buttons
+
+    // Create pagination buttons
+    const prevButton = createPaginationButton("«", "prev");
+    pagination.appendChild(prevButton);
+
+    if (totalPages <= 7) {
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = createPaginationButton(i, i);
+        if (i === currentPage) {
+          pageButton.classList.add("active");
+        }
+        pagination.appendChild(pageButton);
+      }
+    } else {
+      // Always show the first page button
+      const firstPageButton = createPaginationButton(1, 1);
+      pagination.appendChild(firstPageButton);
+      if (currentPage === 1) {
+        firstPageButton.classList.add("active");
+      }
+
+      if (currentPage > 4) {
+        const ellipsis = document.createElement("span");
+        ellipsis.textContent = "...";
+        pagination.appendChild(ellipsis);
+      }
+
+      const startPage = Math.max(2, currentPage - 2);
+      const endPage = Math.min(totalPages - 1, currentPage + 2);
+
+      for (let i = startPage; i <= endPage; i++) {
+        const pageButton = createPaginationButton(i, i);
+        if (i === currentPage) {
+          pageButton.classList.add("active");
+        }
+        pagination.appendChild(pageButton);
+      }
+
+      if (currentPage < totalPages - 3) {
+        const ellipsis = document.createElement("span");
+        ellipsis.textContent = "...";
+        pagination.appendChild(ellipsis);
+      }
+
+      // Always show the last page button
+      const lastPageButton = createPaginationButton(totalPages, totalPages);
+      pagination.appendChild(lastPageButton);
+      if (currentPage === totalPages) {
+        lastPageButton.classList.add("active");
+      }
+    }
+
+    const nextButton = createPaginationButton("»", "next");
+    pagination.appendChild(nextButton);
+  }
+
+  // Function to create pagination button
+  function createPaginationButton(label, page) {
+    const button = document.createElement("button");
+    button.textContent = label;
+    button.setAttribute("data-page", page);
+    button.classList.add("pagination-item");
+    return button;
+  }
+
+  // Event listener for pagination buttons
+  document
+    .getElementById("pagination")
+    .addEventListener("click", function (event) {
+      const target = event.target;
+      if (target.tagName === "BUTTON") {
+        const page = target.getAttribute("data-page");
+        if (page === "prev") {
+          if (currentPage > 1) {
+            currentPage--;
+            fetchMovies(currentPage);
+          }
+        } else if (page === "next") {
+          if (currentPage < totalPages) {
+            currentPage++;
+            fetchMovies(currentPage);
+          }
+        } else {
+          currentPage = parseInt(page);
+          fetchMovies(currentPage);
+        }
+      }
+    });
+
   // Display movie details
   function displayMovieDetails(movie) {
     movieDetails.innerHTML = `
-            <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
-            <h2>${movie.title}</h2>
-            <p>${movie.overview}</p>
-            <button id="back-btn">Back</button>
-        `;
+      <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
+      <h2>${movie.title}</h2>
+      <p><strong>Vote/Votes:</strong> ${movie.vote_average} / ${
+      movie.vote_count
+    }</p>
+      <p><strong>Popularity:</strong> ${movie.popularity}</p>
+      <p><strong>Original Title:</strong> ${movie.original_title}</p>
+      <p><strong>Genre:</strong> ${movie.genre_ids.join(", ")}</p>
+      <p><strong>About:</strong> ${movie.overview}</p>
+      <div class="button-group">
+        <button class="add-to-watched" data-id="${
+          movie.id
+        }">Add to Watched</button>
+        <button class="add-to-queue" data-id="${movie.id}">Add to Queue</button>
+      </div>
+      `;
     movieDetails.classList.remove("hidden");
-    document.getElementById("main-content").classList.add("hidden");
-    document.getElementById("back-btn").addEventListener("click", () => {
-      movieDetails.classList.add("hidden");
-      document.getElementById("main-content").classList.remove("hidden");
-    });
+    overlay.classList.remove("hidden");
+
+    movieDetails
+      .querySelector(".add-to-watched")
+      .addEventListener("click", () => {
+        addToLibrary(movie, "watched");
+      });
+
+    movieDetails
+      .querySelector(".add-to-queue")
+      .addEventListener("click", () => {
+        addToLibrary(movie, "queue");
+      });
+
+    // close modal
+    overlay.addEventListener("click", closeModal);
+  }
+
+  function closeModal() {
+    movieDetails.classList.add("hidden");
+    overlay.classList.add("hidden");
+    overlay.removeEventListener("click", closeModal);
   }
 
   // Search functionality
@@ -78,5 +229,98 @@ document.addEventListener("DOMContentLoaded", () => {
   if (localStorage.getItem("dark-mode") === "true") {
     document.body.classList.add("dark-mode");
     themeSwitch.checked = true;
+  }
+  // navigation
+  homeLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    mainContent.classList.remove("hidden");
+    libraryContent.classList.add("hidden");
+  });
+
+  libraryLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    mainContent.classList.add("hidden");
+    libraryContent.classList.remove("hidden");
+    displayLibrary();
+  });
+
+  watchedBtn.addEventListener("click", () => {
+    currentLibraryView = "watched";
+    displayLibrary();
+  });
+
+  queueBtn.addEventListener("click", () => {
+    currentLibraryView = "queue";
+    displayLibrary();
+  });
+
+  // add to library
+
+  function addToLibrary(movie, type) {
+    let library = JSON.parse(localStorage.getItem(type)) || [];
+    if (!library.some((libMovie) => libMovie.id === movie.id)) {
+      library.push(movie);
+      localStorage.setItem(type, JSON.stringify(library));
+    }
+  }
+
+  //library
+  function displayLibrary() {
+    libraryMovieList.innerHTML = "";
+    const library = JSON.parse(localStorage.getItem(currentLibraryView)) || [];
+    library.forEach((movie) => {
+      const movieItem = document.createElement("div");
+      movieItem.classList.add("movie-item");
+      movieItem.innerHTML = `
+        <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+        <p>${movie.release_date.split("-")[0]}</p>
+        <p>${movie.vote_average}</p>
+        <button class="remove-from-library" data-id="${
+          movie.id
+        }" data-type="${currentLibraryView}">Remove</button>
+      `;
+
+      movieItem
+        .querySelector(".remove-from-library")
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+          removeFromLibrary(movie, currentLibraryView);
+        });
+      movieItem.addEventListener("click", () => {
+        displayMovieDetails(movie);
+      });
+      libraryMovieList.appendChild(movieItem);
+    });
+  }
+
+  // remove
+  function removeFromLibrary(movieToRemove, type) {
+    let library = JSON.parse(localStorage.getItem(type)) || [];
+    library = library.filter((movie) => movie.id !== movieToRemove.id);
+    localStorage.setItem(type, JSON.stringify(library));
+    displayLibrary();
+  }
+});
+
+//btn to top smooth animation
+function scrollToTop() {
+  const c = document.documentElement.scrollTop || document.body.scrollTop;
+  if (c > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, c - c / 8);
+  }
+}
+
+// Show/hide the button based on the scroll position
+window.addEventListener("scroll", function () {
+  const scrollToTopBtn = document.getElementById("upward");
+  if (
+    document.documentElement.scrollTop > 300 ||
+    document.body.scrollTop > 300
+  ) {
+    scrollToTopBtn.style.display = "block";
+  } else {
+    scrollToTopBtn.style.display = "none";
   }
 });
