@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
         <h3>${movie.title}</h3>
         <p>${movie.release_date.split("-")[0]}</p>
-        <p>${movie.vote_average}</p>
+        <p>${movie.vote_average.toFixed(1)}</p>
         <button class="add-to-library" data-id="${
           movie.id
         }" data-type="watched">Add to Watched</button>
@@ -158,23 +158,42 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-  // Display movie details
+  // ------------------------------Display movie details------------------------------ //
   function displayMovieDetails(movie) {
     movieDetails.innerHTML = `
+    <div class="modal-container">
       <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
+      <div class="modal-side-info">
       <h2>${movie.title}</h2>
-      <p><strong>Vote/Votes:</strong> ${movie.vote_average} / ${
-      movie.vote_count
-    }</p>
-      <p><strong>Popularity:</strong> ${movie.popularity}</p>
-      <p><strong>Original Title:</strong> ${movie.original_title}</p>
-      <p><strong>Genre:</strong> ${movie.genre_ids.join(", ")}</p>
-      <p><strong>About:</strong> ${movie.overview}</p>
+     
+<div class="list-div">
+<ul class="left-list">
+<li>Vote/ Votes</li>
+<li>Popularity</li>
+<li>Original Title</li>
+<li>Genre</li>
+</ul>
+<ul class="right-list">
+<li>${movie.vote_average.toFixed(1)} / ${movie.vote_count}</li>
+<li>${movie.popularity}</li>
+<li>${movie.original_title}</li>
+<li>${movie.genre_ids.join(", ")}</li>
+</ul>
+</div>
+<div class="side-info-about">
+<h4>About</h4>
+ <p>${movie.overview}</p>
+ </div>
+
+
       <div class="button-group">
         <button class="add-to-watched" data-id="${
           movie.id
         }">Add to Watched</button>
         <button class="add-to-queue" data-id="${movie.id}">Add to Queue</button>
+      </div>
+      </div>
+      
       </div>
       `;
     movieDetails.classList.remove("hidden");
@@ -275,7 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
         <h3>${movie.title}</h3>
         <p>${movie.release_date.split("-")[0]}</p>
-        <p>${movie.vote_average}</p>
+        <p>${movie.vote_average.toFixed(1)}</p>
         <button class="remove-from-library" data-id="${
           movie.id
         }" data-type="${currentLibraryView}">Remove</button>

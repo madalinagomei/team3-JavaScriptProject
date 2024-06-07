@@ -12,7 +12,14 @@
   --time: 250ms;
   --function-animate: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
 body.dark-mode {
   --background-color: #121212;
   --text-color: #e0e0e0;
@@ -24,17 +31,6 @@ body.dark-mode {
   --border-color: #333;
   --footer-background-color: #1e1e1e;
   --footer-text-color: #545454;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
 }
 
 body {
@@ -136,15 +132,6 @@ nav a {
   display: none;
 }
 
-#movie-details {
-  background-color: var(--movie-item-background-color);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 600px;
-  padding: 20px;
-}
-
 footer {
   background-color: var(--footer-background-color);
   color: var(--footer-text-color);
@@ -198,35 +185,83 @@ input:checked + .slider:before {
   transform: translateX(14px);
 }
 /* moovie details  */
+/* ------------------------------------------------------------------------------------------------ */
+
+.modal-container {
+  display: flex;
+  gap: 16px;
+}
+
 
 #movie-details {
   background-color: var(--movie-item-background-color);
   border: 1px solid var(--border-color);
-  border-radius: 10px;
-  margin: 20px auto;
-  max-width: 600px;
-  padding: 20px;
+  padding: 40px 12px;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 1001;
+  width: 806px;
+  height: 558px;
+
 }
 
 #movie-details img {
-  width: 100%;
-  border-radius: 10px;
+  width: 375px;
+  height: 478px;
+  border-radius: 5px;
 }
-
 #movie-details h2 {
-  margin-top: 10px;
+  font-size: 30px;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+/* ------------------------------------------------------------------------------------------------ */
+.modal-side-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+}
+.list-div {
+  display: flex;
+  gap: 83px;
+}
+#movie-details h4 {
+  font-size: 12px;
+font-weight: 500;
+line-height: 133.333%;
+text-transform: uppercase;
+padding-bottom: 8px;
+}
+.side-info-about p {
+font-size: 12px;
+font-weight: 500;
+line-height: 166.667%;
+}
+.left-list{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+color: #8C8C8C;
+font-size: 12px;
+font-weight: 500;
+line-height: 133.333%;
+
+}
+.right-list{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+font-size: 12px;
+font-weight: 500;
+line-height: 133.333%;
 }
 
-#movie-details p {
-  margin: 10px 0;
-}
-
+/* ------------------------------------------------------------------------------------------------ */
 #movie-details button {
   margin-top: 10px;
   padding: 10px;
@@ -254,6 +289,8 @@ input:checked + .slider:before {
   border-radius: 5px;
   cursor: pointer;
 }
+/* ------------------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------------------ */
 /* upward button  */
 
 .upward {
