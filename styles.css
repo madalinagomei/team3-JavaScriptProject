@@ -41,34 +41,39 @@ body {
   padding: 0;
   transition: background-color 0.3s, color 0.3s;
 }
-
-header {
-  background-color: var(--header-background-color);
-  color: var(--header-text-color);
-  padding: 20px;
-  text-align: center;
+/* -------------------------header styles------------------------- */
+.absolute {
   position: relative;
+  max-width: 1216px;
+  margin: auto;
+}
+
+.hero-carousel {
+position: absolute;
+}
+
+.hero-carousel-item {
+display: none; 
+}
+
+.hero-carousel-item:first-of-type {
+display: block; 
+border-radius: 15px;
+}
+
+.hero-overlay {
+position: relative;
+padding: 16px 32px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+height:316px;
 }
 
 .header__title {
-  /* display: none; */
-  font-size: 30px;
-  line-height: 1.17;
+  color: #FFF;
+  font-size: 64px;
   font-weight: 500;
-  color: var(--header-text-color);
-  cursor: pointer;
-  margin-left: 8px;
-  display: inline-block;
-}
-
-header h1 {
-  margin: 0;
-}
-
-header input {
-  margin-top: 10px;
-  padding: 10px;
-  width: 80%;
 }
 
 .search-form__input {
@@ -82,12 +87,32 @@ header input {
   line-height: 1.14;
 }
 
-nav a {
-  color: var(--link-color);
-  margin: 0 10px;
-  text-decoration: none;
+.nav {
+  display: flex;
+  gap: 8px;
 }
 
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+
+#home-link,
+#library-link
+{
+  padding: 14px 24px;
+  border-radius: 100px;
+  border: none;
+  background: #FFF;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+
+/* -------------------------------------------------------------------------- */
 #main-content {
   padding: 20px;
 }
@@ -105,6 +130,7 @@ nav a {
   display: grid;
   /* padding: 60px auto; */
   justify-content: center;
+  position: relative;
 }
 
 .movie-item {
@@ -142,8 +168,8 @@ footer {
 /* Toggle switch styling */
 .switch {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 270px;
+  right: 30px;
   display: inline-block;
   width: 34px;
   height: 20px;

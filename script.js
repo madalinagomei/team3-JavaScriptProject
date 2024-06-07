@@ -1,3 +1,20 @@
+  // HEADER CAROUSEL------------------------------------------------------------
+  
+  document.addEventListener("DOMContentLoaded", function () {
+    const carouselItems = document.querySelectorAll(".hero-carousel-item");
+    let currentIndex = 0;
+    const intervalTime = 10000; 
+  
+    function showNextImage() {
+      carouselItems[currentIndex].style.display = "none";
+      currentIndex = (currentIndex + 1) % carouselItems.length;
+      carouselItems[currentIndex].style.display = "block";
+    }
+    setInterval(showNextImage, intervalTime);
+  });
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const apiKey = "584875d09aec925781121837a2fa3c3b";
   const apiUrl = "https://api.themoviedb.org/3";
@@ -18,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentLibraryView = "watched";
   let currentPage = 1;
   let totalPages = 20; // Assume 20 pages initially
+
+
+
 
   // Fetch movies for the homepage
   fetchMovies(currentPage);
@@ -178,6 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <li>${movie.popularity}</li>
 <li>${movie.original_title}</li>
 <li>${movie.genre_ids.join(", ")}</li>
+
 </ul>
 </div>
 <div class="side-info-about">
