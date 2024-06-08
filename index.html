@@ -20,9 +20,12 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    
+
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/src/notiflix.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/src/notiflix.min.css"
+    />
   </head>
   <body>
     <!-- -------------------------Header HTML------------------------- -->
@@ -47,25 +50,47 @@
           data-carousel-item
         />
       </div>
-      <div class="hero-overlay">
+      <div class="hero-overlay header-nav-container">
         <div class="nav">
-          <button id="home-link"><a href="#" >Home</a></button>
-          
-          <button id="library-link"><a href="#" >My Library</a></button>
+          <div class="logo-container">
+            <svg class="headeer__logo" width="24" height="24">
+              <use href=""></use>
+            </svg>
+            <h1 class="header__title">Filmoteka</h1>
+          </div>
+          <nav>
+            <ul class="site-nav__list">
+              <li class="site-nav__item">
+                <button id="home-link" data-request="home" aria-label="home">
+                  Home
+                </button>
+              </li>
+              <li class="site-nav__item">
+                <button
+                  id="library-link"
+                  data-request="library"
+                  aria-label="my library"
+                >
+                  My Library
+                </button>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <input
-        class="search-form__input"
-        type="text"
-        id="search-input"
-        name="searchQuery"
-        placeholder="Movie search"
-      />
-
+        <form class="search-form">
+          <input
+            class="search-form__input"
+            type="text"
+            id="search-input"
+            name="searchQuery"
+            placeholder="Movie search"
+            aria-label="search"
+          />
+        </form>
         <label class="switch">
           <input type="checkbox" id="theme-switch" />
           <span class="slider round"></span>
         </label>
-        <h1 class="header__title">Filmoteka</h1>
       </div>
     </div>
     <!-- --------------------------------------------------------------------------- -->
@@ -108,6 +133,9 @@
     </footer>
 
     <script src="script.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"
+    ></script>
   </body>
 </html>
