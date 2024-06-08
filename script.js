@@ -1,5 +1,8 @@
   // HEADER CAROUSEL------------------------------------------------------------
   
+//import notiflix for pop-ups
+// import Notiflix from 'notiflix';
+
   document.addEventListener("DOMContentLoaded", function () {
     const carouselItems = document.querySelectorAll(".hero-carousel-item");
     let currentIndex = 0;
@@ -13,7 +16,7 @@
     setInterval(showNextImage, intervalTime);
   });
 
-
+  
 
 document.addEventListener("DOMContentLoaded", () => {
   const apiKey = "584875d09aec925781121837a2fa3c3b";
@@ -32,6 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const watchedBtn = document.getElementById("watched-btn");
   const queueBtn = document.getElementById("queue-btn");
 
+  const NUMBEROFITEMSPERREQUEST = 20;
+  const NUMBEROFITEMSPERPAGE = 9;
+
   let currentLibraryView = "watched";
   let currentPage = 1;
   let totalPages = 20; // Assume 20 pages initially
@@ -45,7 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Display movies in the main content
   function displayMovies(movies) {
     movieList.innerHTML = "";
+    
     movies.forEach((movie) => {
+      
       const movieItem = document.createElement("div");
       movieItem.classList.add("movie-item");
       movieItem.innerHTML = `
@@ -75,14 +83,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to fetch movies for a given page
   function fetchMovies(page) {
+    let needMorePages = false;
+    let completeData = [];
+
+    let actualPage = Math.floor((page * NUMBEROFITEMSPERPAGE) / NUMBEROFITEMSPERREQUEST) + 1;
+    console.log("actual page is " + actualPage);
+
+    if(((page * NUMBEROFITEMSPERPAGE) - (NUMBEROFITEMSPERREQUEST * (actualPage - 1))) < NUMBEROFITEMSPERPAGE) {
+      needMorePages = true;
+    }
+
+    console.log("actual page afterwards is " + actualPage);
+
     fetch(
-      `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${page}`
+      `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${actualPage}`
     )
       .then((response) => response.json())
-      .then((data) => {
-        displayMovies(data.results);
-        updatePagination();
+      .then((data1) => {
+        if(needMorePages) {
+          completeData = data1.results.slice(((page - 1) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST, NUMBEROFITEMSPERREQUEST);
+          fetch(
+            `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${actualPage + 1}`
+          ) .then((response) => response.json())
+          .then((data2) => {
+            
+            completeData = completeData.concat(data2.results.slice(0, ((page * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST)));
+            displayMovies(completeData);
+            updatePagination();
+          });
+        } else {
+          displayMovies(data1.results.slice(((page - 1) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST, ((page) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST));
+          updatePagination();
+        }
       });
+      
   }
 
   // Function to update pagination
@@ -194,7 +228,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <li>Genre</li>
 </ul>
 <ul class="right-list">
-<li>${movie.vote_average.toFixed(1)} / ${movie.vote_count}</li>
+<li><span class="vote-average">${movie.vote_average.toFixed(1)}</span> / ${movie.vote_count}</li>
 <li>${movie.popularity}</li>
 <li>${movie.original_title}</li>
 <li>${movie.genre_ids.join(", ")}</li>
@@ -301,6 +335,9 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!library.some((libMovie) => libMovie.id === movie.id)) {
       library.push(movie);
       localStorage.setItem(type, JSON.stringify(library));
+      Notiflix.Notify.success("Successfully added movie to library.");
+    } else {
+      Notiflix.Notify.info("Movie already in library.")
     }
   }
 
@@ -339,6 +376,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let library = JSON.parse(localStorage.getItem(type)) || [];
     library = library.filter((movie) => movie.id !== movieToRemove.id);
     localStorage.setItem(type, JSON.stringify(library));
+    Notiflix.Notify.success("Successfully removed movie from library.");
     displayLibrary();
   }
 });
