@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
     let completeData = [];
 
     let actualPage = Math.floor((page * NUMBEROFITEMSPERPAGE) / NUMBEROFITEMSPERREQUEST) + 1;
-    console.log("actual page is " + actualPage);
+    //console.log("actual page is " + actualPage);
 
     if(((page * NUMBEROFITEMSPERPAGE) - (NUMBEROFITEMSPERREQUEST * (actualPage - 1))) < NUMBEROFITEMSPERPAGE) {
       needMorePages = true;
     }
 
-    console.log("actual page afterwards is " + actualPage);
+    //console.log("actual page afterwards is " + actualPage);
 
     fetch(
       `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${actualPage}`
@@ -214,56 +214,92 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------------------Display movie details------------------------------ //
   function displayMovieDetails(movie) {
+
+    let addOrRemoveWatched = "Add to Watched";
+    let inWatched = false;
+    let addOrRemoveQueue = "Add to Queue";
+    let inQueue = false;
+
+    let library = JSON.parse(localStorage.getItem("watched")) || [];
+
+    if (!library.some((libMovie) => libMovie.id === movie.id)) {
+      //Notiflix.Notify.success("Movie not in watched library.");
+    } else {
+      //Notiflix.Notify.info("Movie already in watched library.");
+      addOrRemoveWatched = "Remove from Watched";
+      inWatched = true;
+    }
+
+    library = JSON.parse(localStorage.getItem("queue")) || [];
+
+    if (!library.some((libMovie) => libMovie.id === movie.id)) {
+      //Notiflix.Notify.success("Movie not in queue.");
+    } else {
+      //Notiflix.Notify.info("Movie already in queue.");
+      addOrRemoveQueue = "Remove from Queue";
+      inQueue = true;
+    }
+
+
     movieDetails.innerHTML = `
     <div class="modal-container">
       <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
       <div class="modal-side-info">
       <h2>${movie.title}</h2>
      
-<div class="list-div">
-<ul class="left-list">
-<li>Vote/ Votes</li>
-<li>Popularity</li>
-<li>Original Title</li>
-<li>Genre</li>
-</ul>
-<ul class="right-list">
-<li><span class="vote-average">${movie.vote_average.toFixed(1)}</span> / ${movie.vote_count}</li>
-<li>${movie.popularity}</li>
-<li>${movie.original_title}</li>
-<li>${movie.genre_ids.join(", ")}</li>
+      <div class="list-div">
+      <ul class="left-list">
+      <li>Vote/ Votes</li>
+      <li>Popularity</li>
+      <li>Original Title</li>
+      <li>Genre</li>
+      </ul>
+      <ul class="right-list">
+      <li><span class="vote-average">${movie.vote_average.toFixed(1)}</span> / ${movie.vote_count}</li>
+      <li>${movie.popularity}</li>
+      <li>${movie.original_title}</li>
+      <li>${movie.genre_ids.join(", ")}</li>
 
-</ul>
-</div>
-<div class="side-info-about">
-<h4>About</h4>
- <p>${movie.overview}</p>
- </div>
+      </ul>
+      </div>
+      <div class="side-info-about">
+      <h4>About</h4>
+      <p>${movie.overview}</p>
+      </div>
 
 
       <div class="button-group">
         <button class="add-to-watched" data-id="${
           movie.id
-        }">Add to Watched</button>
-        <button class="add-to-queue" data-id="${movie.id}">Add to Queue</button>
+        }">${addOrRemoveWatched}</button>
+        <button class="add-to-queue" data-id="${movie.id}">${addOrRemoveQueue}</button>
       </div>
       </div>
       
       </div>
       `;
+    console.log(movie);
     movieDetails.classList.remove("hidden");
     overlay.classList.remove("hidden");
 
     movieDetails
       .querySelector(".add-to-watched")
       .addEventListener("click", () => {
-        addToLibrary(movie, "watched");
+        if(!inWatched) {
+          addToLibrary(movie, "watched");
+        } else {
+          removeFromLibrary(movie, "watched");
+        }
       });
 
     movieDetails
       .querySelector(".add-to-queue")
       .addEventListener("click", () => {
-        addToLibrary(movie, "queue");
+        if(!inQueue) {
+          addToLibrary(movie, "queue");
+        } else {
+          removeFromLibrary(movie, "queue");
+        }
       });
 
     // close modal
@@ -335,10 +371,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!library.some((libMovie) => libMovie.id === movie.id)) {
       library.push(movie);
       localStorage.setItem(type, JSON.stringify(library));
-      Notiflix.Notify.success("Successfully added movie to library.");
+      Notiflix.Notify.success(`Successfully added movie to ${type}.`);
     } else {
-      Notiflix.Notify.info("Movie already in library.")
+      Notiflix.Notify.info(`Movie already in ${type}.`)
     }
+    displayMovieDetails(movie);
   }
 
   //library
@@ -377,6 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
     library = library.filter((movie) => movie.id !== movieToRemove.id);
     localStorage.setItem(type, JSON.stringify(library));
     Notiflix.Notify.success("Successfully removed movie from library.");
+    displayMovieDetails(movieToRemove);
     displayLibrary();
   }
 });
