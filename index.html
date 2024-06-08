@@ -17,12 +17,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    
     <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/src/notiflix.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/src/notiflix.min.css"
+    />
   </head>
   <body>
     <!-- -------------------------Header HTML------------------------- -->
@@ -49,23 +51,35 @@
       </div>
       <div class="hero-overlay">
         <div class="nav">
-          <button id="home-link"><a href="#" >Home</a></button>
-          
-          <button id="library-link"><a href="#" >My Library</a></button>
+          <form class="search-form">
+            <input
+              class="search-form__input"
+              type="text"
+              id="search-input"
+              name="searchQuery"
+              placeholder="Movie search"
+              aria-label="movie search"
+            />
+
+            <!-- <svg class="search-btn__icon" width="12" height="12">
+              <use href="/images/icons.svg#icon-search"></use>
+            </svg> -->
+          </form>
+          <button id="home-link"><a href="#">Home</a></button>
+
+          <button id="library-link"><a href="#">My Library</a></button>
         </div>
-        <input
-        class="search-form__input"
-        type="text"
-        id="search-input"
-        name="searchQuery"
-        placeholder="Movie search"
-      />
 
         <label class="switch">
           <input type="checkbox" id="theme-switch" />
           <span class="slider round"></span>
         </label>
-        <h1 class="header__title">Filmoteka</h1>
+        <a class="logo__link link" href="index.html" previewlistener="true">
+          <svg class="logo__header-icon">
+            <use href="/images/icons.svg#icon-filmoteka"></use>
+          </svg>
+          <span class="logo__title">Filmoteka</span>
+        </a>
       </div>
     </div>
     <!-- --------------------------------------------------------------------------- -->
@@ -89,9 +103,11 @@
     </main>
 
     <main id="library-content" class="hidden">
-      <h2>My Library</h2>
-      <button id="watched-btn">Watched</button>
-      <button id="queue-btn">Queue</button>
+      <h2 class="library-content__text">My Library</h2>
+      <div class="library-content__buttons">
+        <button class="library-link__btn" id="watched-btn">Watched</button>
+        <button class="library-link__btn" id="queue-btn">Queue</button>
+      </div>
       <div id="library-movie-list"></div>
     </main>
 
@@ -108,6 +124,9 @@
     </footer>
 
     <script src="script.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"
+    ></script>
   </body>
 </html>
