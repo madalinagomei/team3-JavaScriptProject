@@ -1,22 +1,20 @@
-  // HEADER CAROUSEL------------------------------------------------------------
-  
+// HEADER CAROUSEL------------------------------------------------------------
+
 //import notiflix for pop-ups
 // import Notiflix from 'notiflix';
 
-  document.addEventListener("DOMContentLoaded", function () {
-    const carouselItems = document.querySelectorAll(".hero-carousel-item");
-    let currentIndex = 0;
-    const intervalTime = 10000; 
-  
-    function showNextImage() {
-      carouselItems[currentIndex].style.display = "none";
-      currentIndex = (currentIndex + 1) % carouselItems.length;
-      carouselItems[currentIndex].style.display = "block";
-    }
-    setInterval(showNextImage, intervalTime);
-  });
+document.addEventListener("DOMContentLoaded", function () {
+  const carouselItems = document.querySelectorAll(".hero-carousel-item");
+  let currentIndex = 0;
+  const intervalTime = 10000;
 
-  
+  function showNextImage() {
+    carouselItems[currentIndex].style.display = "none";
+    currentIndex = (currentIndex + 1) % carouselItems.length;
+    carouselItems[currentIndex].style.display = "block";
+  }
+  setInterval(showNextImage, intervalTime);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const apiKey = "584875d09aec925781121837a2fa3c3b";
@@ -42,18 +40,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentPage = 1;
   let totalPages = 20; // Assume 20 pages initially
 
-
-
-
   // Fetch movies for the homepage
   fetchMovies(currentPage);
 
   // Display movies in the main content
   function displayMovies(movies) {
     movieList.innerHTML = "";
-    
+
     movies.forEach((movie) => {
-      
       const movieItem = document.createElement("div");
       movieItem.classList.add("movie-item");
       movieItem.innerHTML = `
@@ -86,10 +80,14 @@ document.addEventListener("DOMContentLoaded", () => {
     let needMorePages = false;
     let completeData = [];
 
-    let actualPage = Math.floor((page * NUMBEROFITEMSPERPAGE) / NUMBEROFITEMSPERREQUEST) + 1;
+    let actualPage =
+      Math.floor((page * NUMBEROFITEMSPERPAGE) / NUMBEROFITEMSPERREQUEST) + 1;
     //console.log("actual page is " + actualPage);
 
-    if(((page * NUMBEROFITEMSPERPAGE) - (NUMBEROFITEMSPERREQUEST * (actualPage - 1))) < NUMBEROFITEMSPERPAGE) {
+    if (
+      page * NUMBEROFITEMSPERPAGE - NUMBEROFITEMSPERREQUEST * (actualPage - 1) <
+      NUMBEROFITEMSPERPAGE
+    ) {
       needMorePages = true;
     }
 
@@ -100,23 +98,37 @@ document.addEventListener("DOMContentLoaded", () => {
     )
       .then((response) => response.json())
       .then((data1) => {
-        if(needMorePages) {
-          completeData = data1.results.slice(((page - 1) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST, NUMBEROFITEMSPERREQUEST);
+        if (needMorePages) {
+          completeData = data1.results.slice(
+            ((page - 1) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST,
+            NUMBEROFITEMSPERREQUEST
+          );
           fetch(
-            `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${actualPage + 1}`
-          ) .then((response) => response.json())
-          .then((data2) => {
-            
-            completeData = completeData.concat(data2.results.slice(0, ((page * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST)));
-            displayMovies(completeData);
-            updatePagination();
-          });
+            `${apiUrl}/movie/popular?api_key=${apiKey}&language=en-US&page=${
+              actualPage + 1
+            }`
+          )
+            .then((response) => response.json())
+            .then((data2) => {
+              completeData = completeData.concat(
+                data2.results.slice(
+                  0,
+                  (page * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST
+                )
+              );
+              displayMovies(completeData);
+              updatePagination();
+            });
         } else {
-          displayMovies(data1.results.slice(((page - 1) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST, ((page) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST));
+          displayMovies(
+            data1.results.slice(
+              ((page - 1) * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST,
+              (page * NUMBEROFITEMSPERPAGE) % NUMBEROFITEMSPERREQUEST
+            )
+          );
           updatePagination();
         }
       });
-      
   }
 
   // Function to update pagination
@@ -214,7 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ------------------------------Display movie details------------------------------ //
   function displayMovieDetails(movie) {
-
     let addOrRemoveWatched = "Add to Watched";
     let inWatched = false;
     let addOrRemoveQueue = "Add to Queue";
@@ -240,7 +251,6 @@ document.addEventListener("DOMContentLoaded", () => {
       inQueue = true;
     }
 
-
     movieDetails.innerHTML = `
     <div class="modal-container">
       <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
@@ -255,7 +265,9 @@ document.addEventListener("DOMContentLoaded", () => {
       <li>Genre</li>
       </ul>
       <ul class="right-list">
-      <li><span class="vote-average">${movie.vote_average.toFixed(1)}</span> / ${movie.vote_count}</li>
+      <li><span class="vote-average">${movie.vote_average.toFixed(
+        1
+      )}</span> / ${movie.vote_count}</li>
       <li>${movie.popularity}</li>
       <li>${movie.original_title}</li>
       <li>${movie.genre_ids.join(", ")}</li>
@@ -272,7 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
         <button class="add-to-watched" data-id="${
           movie.id
         }">${addOrRemoveWatched}</button>
-        <button class="add-to-queue" data-id="${movie.id}">${addOrRemoveQueue}</button>
+        <button class="add-to-queue" data-id="${
+          movie.id
+        }">${addOrRemoveQueue}</button>
       </div>
       </div>
       
@@ -285,7 +299,7 @@ document.addEventListener("DOMContentLoaded", () => {
     movieDetails
       .querySelector(".add-to-watched")
       .addEventListener("click", () => {
-        if(!inWatched) {
+        if (!inWatched) {
           addToLibrary(movie, "watched");
         } else {
           removeFromLibrary(movie, "watched");
@@ -295,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
     movieDetails
       .querySelector(".add-to-queue")
       .addEventListener("click", () => {
-        if(!inQueue) {
+        if (!inQueue) {
           addToLibrary(movie, "queue");
         } else {
           removeFromLibrary(movie, "queue");
@@ -373,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem(type, JSON.stringify(library));
       Notiflix.Notify.success(`Successfully added movie to ${type}.`);
     } else {
-      Notiflix.Notify.info(`Movie already in ${type}.`)
+      Notiflix.Notify.info(`Movie already in ${type}.`);
     }
     displayMovieDetails(movie);
   }
@@ -440,3 +454,28 @@ window.addEventListener("scroll", function () {
     scrollToTopBtn.style.display = "none";
   }
 });
+
+// -----------------team modal=====================
+
+// ===========team modal 2==
+// Selectăm elementele necesare
+const footerText = document.getElementById("footer-text");
+const modal = document.getElementById("myModal");
+const closeModal = document.getElementsByClassName("close")[0];
+
+// Când se face click pe textul din footer, se afișează modalul
+footerText.onclick = function () {
+  modal.style.display = "block";
+};
+
+// Când se face click pe (x), se închide modalul
+closeModal.onclick = function () {
+  modal.style.display = "none";
+};
+
+// Când se face click în afara modalului, se închide modalul
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
