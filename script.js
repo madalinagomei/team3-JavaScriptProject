@@ -458,24 +458,31 @@ window.addEventListener("scroll", function () {
 // -----------------team modal=====================
 
 // ===========team modal 2==
-// Selectăm elementele necesare
-const footerText = document.getElementById("footer-text");
-const modal = document.getElementById("myModal");
-const closeModal = document.getElementsByClassName("close")[0];
 
-// Când se face click pe textul din footer, se afișează modalul
-footerText.onclick = function () {
-  modal.style.display = "block";
-};
+// close modal function
+function closeModal() {
+  document.getElementById("myModal").style.display = "none";
+}
 
-// Când se face click pe (x), se închide modalul
-closeModal.onclick = function () {
-  modal.style.display = "none";
-};
+// open modal function
+function openModal() {
+  document.getElementById("myModal").style.display = "block";
+}
 
-// Când se face click în afara modalului, se închide modalul
-window.onclick = function (event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+// close modal click on x
+document.querySelector(".modal .close").addEventListener("click", closeModal);
+
+//close modal on out side click
+window.addEventListener("click", function (event) {
+  if (event.target == document.getElementById("myModal")) {
+    closeModal();
   }
-};
+});
+
+//avent open modal on click footer
+document.getElementById("footer-text").addEventListener("click", openModal);
+
+// hide modal
+document.addEventListener("DOMContentLoaded", function () {
+  closeModal();
+});
