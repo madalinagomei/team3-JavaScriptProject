@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const movieList = document.getElementById("movie-list");
   const movieDetails = document.getElementById("movie-details");
   const overlay = document.getElementById("overlay");
-  const searchInput = document.getElementById("search-input");
+  const searchInput = document.querySelector(".search-form__input");
+  const searchIcon = document.querySelector(".svg-search");
   const themeSwitch = document.getElementById("theme-switch");
   const homeLink = document.getElementById("home-link");
   const libraryLink = document.getElementById("library-link");
@@ -41,7 +42,17 @@ document.addEventListener("DOMContentLoaded", () => {
   let totalPages = 20; // Assume 20 pages initially
 
   // Fetch movies for the homepage
-  fetchMovies(currentPage);
+
+  let genres = {};
+  fetch(`${apiUrl}/genre/movie/list?api_key=${apiKey}&language=en-US`)
+    .then((response) => response.json())
+    .then((data) => {
+      genres = data.genres.reduce((acc, genre) => {
+        acc[genre.id] = genre.name;
+        return acc;
+      }, {});
+      fetchMovies(currentPage);
+    });
 
   // Display movies in the main content
   function displayMovies(movies) {
@@ -49,19 +60,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     movies.forEach((movie) => {
       const movieItem = document.createElement("div");
-      movieItem.classList.add("movie-item");
-      movieItem.innerHTML = `
-        <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
-        <h3>${movie.title}</h3>
-        <p>${movie.release_date.split("-")[0]}</p>
-        <p>${movie.vote_average.toFixed(1)}</p>
-        <button class="add-to-library" data-id="${
-          movie.id
-        }" data-type="watched">Add to Watched</button>
-        <button class="add-to-library" data-id="${
-          movie.id
-        }" data-type="queue">Add to Queue</button>
-      `;
+      movieItem.classList.add("movie-item", "photo");
+
+movieItem.innerHTML = `
+
+  <img src="${
+    imgBaseUrl + (movie.poster_path ? movie.poster_path : "/default.jpg")
+  }" alt="${movie.title}" onerror="this.src='./images/fallback-orange.png';">
+  <div class="glow-wrap">
+    <i class="glow"></i>
+  </div>
+    <h3>${movie.title}</h3>
+  <p>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")} | ${
+  movie.release_date ? movie.release_date.split("-")[0] : "N/A"
+} </p>
+  <button class="add-to-library" data-id="${
+    movie.id
+  }" data-type="watched">Add to Watched</button>
+  <button class="add-to-library" data-id="${
+    movie.id
+  }" data-type="queue">Add to Queue</button>`;
+
       movieItem.querySelectorAll(".add-to-library").forEach((button) => {
         button.addEventListener("click", (e) => {
           e.stopPropagation();
@@ -74,6 +93,42 @@ document.addEventListener("DOMContentLoaded", () => {
       movieList.appendChild(movieItem);
     });
   }
+
+  //search functionality
+  function searchMovies() {
+    const query = searchInput.value.trim().toLowerCase();
+    if (query.length > 2) {
+      fetch(
+        `${apiUrl}/search/movie?api_key=${apiKey}&language=en-US&query=${query}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          // Filter movies by title or genre
+          const filteredMovies = data.results.filter((movie) => {
+            const titleMatch = movie.title.toLowerCase().includes(query);
+            const genreMatch = movie.genre_ids.some((genreId) => {
+              const genreName = genres[genreId]
+                ? genres[genreId].toLowerCase()
+                : "";
+              return genreName.includes(query);
+            });
+            return titleMatch || genreMatch;
+          });
+          displayMovies(filteredMovies);
+        });
+    }
+  }
+
+  searchInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      searchMovies();
+    }
+  });
+
+  searchIcon.addEventListener("click", () => {
+    searchMovies();
+  });
 
   // Function to fetch movies for a given page
   function fetchMovies(page) {
@@ -270,7 +325,7 @@ document.addEventListener("DOMContentLoaded", () => {
       )}</span> / ${movie.vote_count}</li>
       <li>${movie.popularity}</li>
       <li>${movie.original_title}</li>
-      <li>${movie.genre_ids.join(", ")}</li>
+      <li>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")}</li>
 
       </ul>
       </div>
@@ -325,20 +380,6 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.classList.add("hidden");
     overlay.removeEventListener("click", closeModal);
   }
-
-  // Search functionality
-  searchInput.addEventListener("input", () => {
-    const query = searchInput.value;
-    if (query.length > 2) {
-      fetch(
-        `${apiUrl}/search/movie?api_key=${apiKey}&language=en-US&query=${query}`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          displayMovies(data.results);
-        });
-    }
-  });
 
   // Theme switch functionality
   themeSwitch.addEventListener("change", () => {
@@ -402,8 +443,10 @@ document.addEventListener("DOMContentLoaded", () => {
       movieItem.innerHTML = `
         <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
         <h3>${movie.title}</h3>
-        <p>${movie.release_date.split("-")[0]}</p>
-        <p>${movie.vote_average.toFixed(1)}</p>
+   <p>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")} | ${
+        movie.release_date ? movie.release_date.split("-")[0] : "N/A"
+      } </p>
+
         <button class="remove-from-library" data-id="${
           movie.id
         }" data-type="${currentLibraryView}">Remove</button>
