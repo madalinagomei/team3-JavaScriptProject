@@ -611,7 +611,7 @@ input:checked + .slider:before {
       rgba(0, 0, 0, 0.4),
       rgba(0, 0, 0, 0.4)
     ),
-    url("../images/header-bg-library-desk2@x.jpg");
+    url("/images/header-bg-library-desk2@x.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
