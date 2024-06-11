@@ -141,7 +141,8 @@ body {
   rotate: 0deg;
   fill: transparent;
   stroke: currentColor;
-  width: 32px;
+  width: 59px;
+  height: 59px;
   transition: stroke var(--time) var(--function-animate),
     rotate var(--time) var(--function-animate);
 
@@ -150,12 +151,6 @@ body {
     rotate: 180deg;
     fill: transparent;
     stroke: var(--accent-color);
-  }
-  @media (min-width: 768px) {
-    width: 40px;
-  }
-  @media (min-width: 1158px) {
-    width: 59px;
   }
 }
 
@@ -527,14 +522,14 @@ input:checked + .slider:before {
   opacity: 0;
   transition: 0.5s;
   border: none;
-  /* @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     right: 40px;
   }
 
   @media screen and (min-width: 1280 px) {
     width: 50px;
     height: 50px;
-  } */
+  }
 }
 
 .upward.active {
@@ -635,9 +630,9 @@ input:checked + .slider:before {
 
 /* ===================    LIBRARY    ====================== */
 
-/* #library-content {
+#library-content {
   padding: 20px;
-} */
+}
 
 #library-movie-list {
   grid-gap: 30px;

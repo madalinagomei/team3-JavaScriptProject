@@ -13,9 +13,28 @@
         width: 100%;
       }
       .hero-overlay {
-        position: relative;
         padding: 16px;
-        padding-bottom: 0px;
-        height: auto;
+        height: 199px;
       }
+      #movie-list {
+        grid-gap: 15px;
+      }
+      #library-movie-list {
+        grid-gap: 15px;
+      }
+      .movie-item {
+        width: 240px;
+      }
+      #home-link,
+      #library-link {
+        padding: 10px;
+      }
+      .search-form__input {
+        padding: 10px;
+      }
+      .logo__header-icon {
+        width: 40px;
+        height: 40px;
+      }
+      
 }
