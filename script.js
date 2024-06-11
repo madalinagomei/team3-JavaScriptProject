@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const movieItem = document.createElement("div");
       movieItem.classList.add("movie-item", "photo");
 
-movieItem.innerHTML = `
+      movieItem.innerHTML = `
 
   <img src="${
     imgBaseUrl + (movie.poster_path ? movie.poster_path : "/default.jpg")
@@ -72,8 +72,8 @@ movieItem.innerHTML = `
   </div>
     <h3>${movie.title}</h3>
   <p>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")} | ${
-  movie.release_date ? movie.release_date.split("-")[0] : "N/A"
-} </p>
+        movie.release_date ? movie.release_date.split("-")[0] : "N/A"
+      } </p>
   <button class="add-to-library" data-id="${
     movie.id
   }" data-type="watched">Add to Watched</button>
@@ -443,10 +443,9 @@ movieItem.innerHTML = `
       movieItem.innerHTML = `
         <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
         <h3>${movie.title}</h3>
-   <p>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")} | ${
+        <p>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")} | ${
         movie.release_date ? movie.release_date.split("-")[0] : "N/A"
       } </p>
-
         <button class="remove-from-library" data-id="${
           movie.id
         }" data-type="${currentLibraryView}">Remove</button>
@@ -458,6 +457,7 @@ movieItem.innerHTML = `
           e.stopPropagation();
           removeFromLibrary(movie, currentLibraryView);
         });
+
       movieItem.addEventListener("click", () => {
         displayMovieDetails(movie);
       });

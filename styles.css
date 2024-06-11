@@ -59,7 +59,7 @@ body {
   position: relative;
   max-width: 1216px;
   margin: auto;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .hero-carousel {
@@ -122,7 +122,6 @@ body {
   right: 35px;
   cursor: pointer;
 }
-
 
 .nav {
   display: flex;
@@ -230,14 +229,12 @@ a {
   width: 300px;
   cursor: pointer;
   padding: 5px;
-  box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
 
-  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
 
 .movie-item.photo {
   position: relative;
@@ -246,7 +243,7 @@ a {
   border-radius: 5px;
   background: white;
   overflow: hidden;
-  box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
@@ -254,15 +251,13 @@ a {
   width: 100%;
   height: auto;
   object-fit: cover;
- 
-  /* display: block; */
-  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+  /* display: block; */
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .movie-item.photo:hover {
-  
-  box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+  box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
 }
 
 .movie-item.photo .glow-wrap {
@@ -276,14 +271,14 @@ a {
 
 .movie-item.photo .glow {
   display: block;
-  position:absolute;
+  position: absolute;
   width: 40%;
   height: 200%;
-  background: rgba(255,255,255,.2);
+  background: rgba(255, 255, 255, 0.2);
   top: 0;
   filter: blur(5px);
   transform: rotate(45deg) translate(-450%, 0);
-  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .movie-item.photo:hover .glow {
@@ -297,8 +292,6 @@ a {
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-
 .movie-item h3 {
   color: #000;
   font-size: 12px;
@@ -309,10 +302,10 @@ a {
 }
 
 .movie-item p {
-color: var(--accent-color);
-font-size: 12px;
-font-weight: 500;
-line-height: 120%;
+  color: var(--accent-color);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 120%;
 }
 
 .movie-item button {
@@ -526,7 +519,7 @@ input:checked + .slider:before {
     right: 40px;
   }
 
-  @media screen and (min-width: 1280 px) {
+  @media screen and (min-width: 1280px) {
     width: 50px;
     height: 50px;
   }
@@ -931,6 +924,26 @@ only screen and(min-width: 1158px) {
   background-repeat: no-repeat;
 }
 /* end modal team */
+/* ---- remove button */
 
+.movie-item:hover .remove-from-library {
+  display: block;
+}
 
+.remove-from-library {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.remove-from-library:hover {
+  background-color: var(--button-hover);
+}
