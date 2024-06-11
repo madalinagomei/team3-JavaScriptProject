@@ -1,0 +1,21 @@
+/* *******************************************Responsive doamne-ajuta************************************************************** */
+/* TABLET */
+@media screen and (max-width: 1199px) and (min-width: 768px) {
+    .absolute {
+        width: 768px;
+        margin-top:10px;
+      }
+      .hero-carousel {
+        position: absolute;
+        width: 100%;
+      }
+      .hero-carousel-item {
+        width: 100%;
+      }
+      .hero-overlay {
+        position: relative;
+        padding: 16px;
+        padding-bottom: 0px;
+        height: auto;
+      }
+}

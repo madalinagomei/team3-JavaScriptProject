@@ -439,7 +439,7 @@ movieItem.innerHTML = `
     const library = JSON.parse(localStorage.getItem(currentLibraryView)) || [];
     library.forEach((movie) => {
       const movieItem = document.createElement("div");
-      movieItem.classList.add("movie-item");
+      movieItem.classList.add("movie-item", "photo");
       movieItem.innerHTML = `
         <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
         <h3>${movie.title}</h3>

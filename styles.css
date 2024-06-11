@@ -64,10 +64,15 @@ body {
 
 .hero-carousel {
   position: absolute;
+  width: 100%;
 }
 
 .hero-carousel-item {
   display: none;
+}
+.hero-carousel-item img {
+  width: 100%;
+  height: auto;
 }
 
 .hero-carousel-item:first-of-type {
@@ -630,9 +635,9 @@ input:checked + .slider:before {
 
 /* ===================    LIBRARY    ====================== */
 
-#library-content {
+/* #library-content {
   padding: 20px;
-}
+} */
 
 #library-movie-list {
   grid-gap: 30px;
@@ -640,15 +645,14 @@ input:checked + .slider:before {
   max-width: 618px;
   margin: auto;
   display: grid;
-  /* padding: 60px auto; */
   justify-content: center;
   position: relative;
 }
 
-.library-content {
+/* .library-content {
   width: auto;
   flex-direction: row;
-}
+} */
 
 .library-link__btn {
   padding: 14px 24px;
@@ -932,3 +936,6 @@ only screen and(min-width: 1158px) {
   background-repeat: no-repeat;
 }
 /* end modal team */
+
+
+
