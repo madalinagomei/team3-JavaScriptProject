@@ -906,6 +906,11 @@ only screen and(min-width: 1158px) {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.card-back2 {
+  background-image: url("./images/meme.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .card-front3 {
   background-image: url("./images/richard.JPG");
   background-size: cover;
@@ -924,12 +929,13 @@ only screen and(min-width: 1158px) {
   background-repeat: no-repeat;
 }
 /* end modal team */
-/* ---- remove button */
-
+/* ----remove button*?*/
 .movie-item:hover .remove-from-library {
   display: block;
 }
-
+.remove-from-library:hover {
+  background-color: var(--button-hover);
+}
 .remove-from-library {
   display: none;
   position: absolute;
@@ -942,8 +948,4 @@ only screen and(min-width: 1158px) {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-}
-
-.remove-from-library:hover {
-  background-color: var(--button-hover);
 }
