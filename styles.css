@@ -59,8 +59,101 @@ body {
   position: relative;
   max-width: 1216px;
   margin: auto;
-  margin-top:10px;
+  margin-top: 10px;
 }
+/* =======================responsive=========================== */
+/* -----------------------------------------=============== */
+
+@media screen and (min-resolution: 2dppx) {
+  .absolute {
+    background-image: url("./images/header-bg-mob@2x.jpg");
+  }
+}
+@media screen and (max-width: 768px) {
+  .absolute {
+    /* position: relative; */
+    background-image: url("./images/header-bg-mob.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    background-repeat: no-repeat;
+  }
+
+  .hero-carousel {
+    display: none;
+  }
+
+  .hero-overlay {
+    position: relative;
+    display: flex;
+    flex-direction: reverse;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* width: 100%; */
+    align-items: flex-start;
+    /* padding-left: 3px; */
+  }
+
+  .search-form {
+    /* width: 100%; */
+    margin-bottom: 10px;
+  }
+
+  .search-form__input {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+
+  .home-link__btn,
+  .library-link__btn {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+
+  .logo__header-icon {
+    width: 36px;
+  }
+
+  .logo__title {
+    font-family: "Roboto";
+    display: inline-block;
+    font-weight: 500;
+    line-height: 1.17;
+    margin-left: 8px;
+    color: #fff;
+    font-size: 32px;
+    margin-top: 10px;
+  }
+  .logo__link {
+    position: relative;
+    bottom: -550px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    align-items: center;
+    display: flex;
+  }
+
+  #movie-list {
+    grid-template-columns: 1fr 1fr;
+    max-width: 618px;
+    margin: auto;
+    justify-content: center;
+    position: relative;
+  }
+}
+
+/* =======================responsive end=========================== */
+/* -----------------------------------------=============== */
 
 .hero-carousel {
   position: absolute;
@@ -84,21 +177,10 @@ body {
   height: 316px;
 }
 
-/* .header__title {
-  color: #fff;
-  font-size: 64px;
-  font-weight: 500;
-} */
-
 .search-form__input {
   max-width: 320px;
   color: var(--text-color);
-  /* border: none;
-  border-bottom: 0.5px solid var(--header-text-color);
-  background: 0 0; */
-  /* outline: none; */
   font-size: 12px;
-  /* line-height: 1.14; */
 
   padding: 14px 24px;
   border-radius: 5px;
@@ -117,7 +199,6 @@ body {
   right: 35px;
   cursor: pointer;
 }
-
 
 .nav {
   display: flex;
@@ -140,20 +221,16 @@ body {
   transition: stroke var(--time) var(--function-animate),
     rotate var(--time) var(--function-animate);
 
-  .logo__link:hover &,
-  .logo__link:focus & {
-    rotate: 180deg;
-    fill: transparent;
-    stroke: var(--accent-color);
-  }
-  @media (min-width: 768px) {
-    width: 40px;
-  }
   @media (min-width: 1158px) {
     width: 59px;
   }
 }
-
+.logo__link:hover &,
+.logo__link:focus & {
+  rotate: 180deg;
+  fill: transparent;
+  stroke: var(--accent-color);
+}
 .logo__title {
   font-family: "Roboto";
   display: inline-block;
@@ -162,16 +239,6 @@ body {
   line-height: 1.17;
   margin-left: 8px;
   color: #fff;
-
-  @media (min-width: 768px) {
-    font-family: "Roboto";
-    display: inline-block;
-    font-weight: 500;
-    line-height: 1.17;
-    margin-left: 8px;
-    color: #fff;
-    font-size: 40px;
-  }
 
   @media (min-width: 1158px) {
     margin-left: 10px;
@@ -207,17 +274,12 @@ a {
 }
 
 #movie-list {
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; */
-
   grid-gap: 30px;
   grid-template-columns: repeat(3, 1fr);
   max-width: 618px;
   margin: auto;
   display: grid;
-  /* padding: 60px auto; */
+
   justify-content: center;
   position: relative;
 }
@@ -230,14 +292,12 @@ a {
   width: 300px;
   cursor: pointer;
   padding: 5px;
-  box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
 
-  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
 
 .movie-item.photo {
   position: relative;
@@ -246,7 +306,7 @@ a {
   border-radius: 5px;
   background: white;
   overflow: hidden;
-  box-shadow: 1px 1px 10px 0 rgba(0,0,0,.1);
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
 
@@ -254,15 +314,13 @@ a {
   width: 100%;
   height: auto;
   object-fit: cover;
- 
-  /* display: block; */
-  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
 
+  /* display: block; */
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .movie-item.photo:hover {
-  
-  box-shadow: 10px 15px 25px 0 rgba(0,0,0,.2);
+  box-shadow: 10px 15px 25px 0 rgba(0, 0, 0, 0.2);
 }
 
 .movie-item.photo .glow-wrap {
@@ -276,14 +334,14 @@ a {
 
 .movie-item.photo .glow {
   display: block;
-  position:absolute;
+  position: absolute;
   width: 40%;
   height: 200%;
-  background: rgba(255,255,255,.2);
+  background: rgba(255, 255, 255, 0.2);
   top: 0;
   filter: blur(5px);
   transform: rotate(45deg) translate(-450%, 0);
-  transition: all .5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .movie-item.photo:hover .glow {
@@ -297,8 +355,6 @@ a {
 }
 /* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-
-
 .movie-item h3 {
   color: #000;
   font-size: 12px;
@@ -309,10 +365,10 @@ a {
 }
 
 .movie-item p {
-color: var(--accent-color);
-font-size: 12px;
-font-weight: 500;
-line-height: 120%;
+  color: var(--accent-color);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 120%;
 }
 
 .movie-item button {
@@ -536,7 +592,6 @@ input:checked + .slider:before {
   bottom: 25px;
   visibility: visible;
   opacity: 1;
-  /* animation: var(--function-animate); */
 }
 #movie-details .button-group .add-to-watched {
   background-color: var(--accent-color);
@@ -676,19 +731,7 @@ input:checked + .slider:before {
 }
 
 /* ================()******modal team***********()============= */
-/* Stilizare pentru modal */
-/* .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-} */
+
 .modal {
   display: none;
   width: 100%;
