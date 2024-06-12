@@ -55,31 +55,48 @@
       <div class="hero-overlay">
         <div class="nav">
           <div class="search">
-
-          
-          <form class="search-form">
-            <input
-              class="search-form__input"
-              type="text"
-              id="search-input"
-              name="searchQuery"
-              placeholder="Movie search"
-              aria-label="movie search"
-            />
-            <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M14 14.0001L11.1 11.1001" stroke="black" stroke-linecap="round" stroke-linejoin="round"/>
+            <form class="search-form">
+              <input
+                class="search-form__input"
+                type="text"
+                id="search-input"
+                name="searchQuery"
+                placeholder="Movie search"
+                aria-label="movie search"
+              />
+              <svg
+                class="svg-search"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+              >
+                <path
+                  d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+                  stroke="black"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M14 14.0001L11.1 11.1001"
+                  stroke="black"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
               </svg>
-          </form></div>
+            </form>
+          </div>
 
           <div class="home-library-link">
             <button class="home-link__btn" id="home-link">
-            <a href="#">Home</a>
-          </button>
+              <a href="#">Home</a>
+            </button>
 
-          <button class="library-link__btn" id="library-link">
-            <a href="#">My Library</a>
-          </button></div>
+            <button class="library-link__btn" id="library-link">
+              <a href="#">My Library</a>
+            </button>
+          </div>
         </div>
 
         <label class="switch">
@@ -92,7 +109,6 @@
           </svg>
           <span class="logo__title">Filmoteka</span>
         </a>
-        
       </div>
     </div>
     <!-- --------------------------------------------------------------------------- -->
@@ -129,7 +145,7 @@
     <div id="overlay" class="hidden"></div>
 
     <footer>
-      <p class="footer-text" >
+      <p class="footer-text">
         &copy; 2024 | All Rights Reserved | Developed with <span>❤️</span
         ><button id="footer-text" type="button" class="footer-item">
           Team 3
@@ -142,277 +158,270 @@
     <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
-   <h2 class="team-title">Our team</h2>
-    <ul class="team-list list">
-      <li class="team-item">
-        <div class="card-team">
-          <div class="card__face card__face--front card-front1"></div>
-          <div class="card__face card__face--back card-back1"></div>
-        </div>
-        <div class="team-block">
-          <h3 class="team-name">Stefan</h3>
-          <h4 class="team-position"> Developer</h4>
-          <p class="team-functional">
-            Magic in JS editing stuff and styling the cards and much more.
-          </p>
-          <ul class="social-list">
-            <li class="social-list__item list">
-              <a
-                href="mailto://stefan.com"
-                target="blank"
-                class="social-list__link link"
-                aria-label="email"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-mail2"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://github.com/stefan"
-                target="blank"
-                class="social-list__link link"
-                aria-label="github"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-github"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://linkedin.com/in/stefan/"
-                target="blank"
-                class="social-list__link link"
-                aria-label="linkedin"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-linkedin"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="team-item">
-        <div class="card-team">
-          <div class="card__face card__face--front card-front2"></div>
-          <div class="card__face card__face--back card-back2"></div>
-        </div>
-        <div class="team-block">
-          <h3 class="team-name">Sara</h3>
-          <h4 class="team-position">Developer</h4>
-          <p class="team-functional">
-            Magic JS in adding a new page without an extra HTML and much more 
-          </p>
-          <ul class="social-list">
-            <li class="social-list__item list">
-              <a
-                href="mailto://sarasmarandoiu@gmail.com"
-                target="blank"
-                class="social-list__link link"
-                aria-label="email"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-mail2"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://github.com/SaraSmarandoiu"
-                target="blank"
-                class="social-list__link link"
-                aria-label="github"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-github"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://www.linkedin.com/in/sara-angelica-smarandoiu-9156a2267/"
-                target="blank"
-                class="social-list__link link"
-                aria-label="linkedin"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-linkedin"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="team-item">
-        <div class="card-team">
-          <div class="card__face card__face--front card-front3"></div>
-          <div class="card__face card__face--back card-back3"></div>
-        </div>
-        <div class="team-block">
-          <h3 class="team-name">Richard</h3>
-          <h4 class="team-position">Developer</h4>
-          <p class="team-functional">
-            Pagination and scroll up 
-          </p>
-          <ul class="social-list">
-            <li class="social-list__item list">
-              <a
-                href="mailto://richard.com"
-                target="blank"
-                class="social-list__link link"
-                aria-label="email"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-mail2"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://github.com/richard"
-                target="blank"
-                class="social-list__link link"
-                aria-label="github"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-github"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://linkedin.com/in/richard/"
-                target="blank"
-                class="social-list__link link"
-                aria-label="linkedin"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-linkedin"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="team-item">
-        <div class="card-team">
-          <div class="card__face card__face--front card-front4"></div>
-          <div class="card__face card__face--back card-back4"></div>
-        </div>
-        <div class="team-block">
-          <h3 class="team-name">Cezara</h3>
-          <h4 class="team-position">Scrum Muster + Developer</h4>
-          <p class="team-functional">
-            Helping the team and all developers with difficulties. 
-          </p>
-          <ul class="social-list">
-            <li class="social-list__item list">
-              <a
-                href="mailto://cezara.com"
-                target="blank"
-                class="social-list__link link"
-                aria-label="email"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-mail2"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://github.com/cezara"
-                target="blank"
-                class="social-list__link link"
-                aria-label="github"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-github"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://linkedin.com/in/cezara/"
-                target="blank"
-                class="social-list__link link"
-                aria-label="linkedin"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-linkedin"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <li class="team-item">
-        <div class="card-team">
-          <div class="card__face card__face--front card-front5"></div>
-          <div class="card__face card__face--back card-back5"></div>
-        </div>
-        <div class="team-block">
-          <h3 class="team-name">Madalina</h3>
-          <h4 class="team-position">Team lead</h4>
-          <p class="team-functional">
-            Preparation of the basis of the site.
-          </p>
-          <ul class="social-list">
-            <li class="social-list__item list">
-              <a
-                href="mailto:madalinagomei@gmail.com"
-                target="blank"
-                class="social-list__link link"
-                aria-label="email"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-mail2"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://github.com/madalinagomei"
-                target="blank"
-                class="social-list__link link"
-                aria-label="github"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-github"></use>
-                </svg>
-              </a>
-            </li>
-            <li class="social-list__item list">
-              <a
-                href="https://www.linkedin.com/in/madalinagomei/"
-                target="blank"
-                class="social-list__link link"
-                aria-label="linkedin"
-              >
-                <svg class="social-list__icon">
-                  <use href="./images/icons.svg#icon-linkedin"></use>
-                </svg>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+        <h2 class="team-title">Our team</h2>
+        <ul class="team-list list">
+          <li class="team-item">
+            <div class="card-team">
+              <div class="card__face card__face--front card-front1"></div>
+              <div class="card__face card__face--back card-back1"></div>
+            </div>
+            <div class="team-block">
+              <h3 class="team-name">Stefan</h3>
+              <h4 class="team-position">Developer</h4>
+              <p class="team-functional">
+                Magic in JS editing stuff and styling the cards and much more.
+              </p>
+              <ul class="social-list">
+                <li class="social-list__item list">
+                  <a
+                    href="mailto://stefan.com"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="email"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-mail2"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://github.com/stefan"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="github"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-github"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://linkedin.com/in/stefan/"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="linkedin"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="card-team">
+              <div class="card__face card__face--front card-front2"></div>
+              <div class="card__face card__face--back card-back2"></div>
+            </div>
+            <div class="team-block">
+              <h3 class="team-name">Sara</h3>
+              <h4 class="team-position">Developer</h4>
+              <p class="team-functional">
+                Magic JS in adding a new page without an extra HTML and much
+                more
+              </p>
+              <ul class="social-list">
+                <li class="social-list__item list">
+                  <a
+                    href="mailto://sarasmarandoiu@gmail.com"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="email"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-mail2"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://github.com/SaraSmarandoiu"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="github"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-github"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://www.linkedin.com/in/sara-angelica-smarandoiu-9156a2267/"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="linkedin"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="card-team">
+              <div class="card__face card__face--front card-front3"></div>
+              <div class="card__face card__face--back card-back3"></div>
+            </div>
+            <div class="team-block">
+              <h3 class="team-name">Richard</h3>
+              <h4 class="team-position">Developer</h4>
+              <p class="team-functional">Pagination and scroll up</p>
+              <ul class="social-list">
+                <li class="social-list__item list">
+                  <a
+                    href="mailto://richard.com"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="email"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-mail2"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://github.com/richard"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="github"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-github"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://linkedin.com/in/richard/"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="linkedin"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="card-team">
+              <div class="card__face card__face--front card-front4"></div>
+              <div class="card__face card__face--back card-back4"></div>
+            </div>
+            <div class="team-block">
+              <h3 class="team-name">Cezara</h3>
+              <h4 class="team-position">Scrum Muster + Developer</h4>
+              <p class="team-functional">
+                Helping the team and all developers with difficulties.
+              </p>
+              <ul class="social-list">
+                <li class="social-list__item list">
+                  <a
+                    href="mailto://cezara.com"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="email"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-mail2"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://github.com/cezara"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="github"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-github"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://linkedin.com/in/cezara/"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="linkedin"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="team-item">
+            <div class="card-team">
+              <div class="card__face card__face--front card-front5"></div>
+              <div class="card__face card__face--back card-back5"></div>
+            </div>
+            <div class="team-block">
+              <h3 class="team-name">Madalina</h3>
+              <h4 class="team-position">Team lead</h4>
+              <p class="team-functional">
+                Preparation of the basis of the site.
+              </p>
+              <ul class="social-list">
+                <li class="social-list__item list">
+                  <a
+                    href="mailto:madalinagomei@gmail.com"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="email"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-mail2"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://github.com/madalinagomei"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="github"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-github"></use>
+                    </svg>
+                  </a>
+                </li>
+                <li class="social-list__item list">
+                  <a
+                    href="https://www.linkedin.com/in/madalinagomei/"
+                    target="blank"
+                    class="social-list__link link"
+                    aria-label="linkedin"
+                  >
+                    <svg class="social-list__icon">
+                      <use href="./images/icons.svg#icon-linkedin"></use>
+                    </svg>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
 
-
-
-
-      </div>
-    </div>
     <script src="script.js"></script>
     <script
       type="module"
       src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"
     ></script>
-    <!-- <include src="/modal-team.html"></include> -->
   </body>
 </html>

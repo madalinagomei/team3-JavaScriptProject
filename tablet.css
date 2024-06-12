@@ -36,4 +36,17 @@
     width: 40px;
     height: 40px;
   }
+  /* modal team */
+
+  .modal-content {
+    width: auto;
+  }
+
+  .team-item {
+    width: calc((100% -20px) / 3);
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    width: 100%;
+  }
 }

@@ -669,18 +669,7 @@ input:checked + .slider:before {
 
 /* ================()******modal team***********()============= */
 /* Stilizare pentru modal */
-/* .modal {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0, 0, 0);
-  background-color: rgba(0, 0, 0, 0.4);
-} */
+
 .modal {
   display: none;
   width: 100%;
@@ -698,11 +687,11 @@ input:checked + .slider:before {
 .modal-content {
   background-color: #3b3a3a;
   background-image: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url("./images/header-bg-library-desk2@x.jpg");
+    80deg,
+    rgba(224, 216, 64, 0.999),
+    rgb(248, 131, 6),
+    rgb(178, 53, 4)
+  );
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -723,7 +712,8 @@ input:checked + .slider:before {
   align-items: center;
   width: 60px;
   height: 60px;
-  fill: #ffffff;
+  fill: var(--accent-color);
+  color: var(--header-text-color);
   background-color: transparent;
   border: none;
   position: absolute;
@@ -738,7 +728,7 @@ input:checked + .slider:before {
 
 .close:hover,
 .close:focus {
-  color: var(--accent-color);
+  color: var(--button-hover2);
   text-decoration: none;
   cursor: pointer;
   scale: 1.1;
@@ -766,10 +756,8 @@ input:checked + .slider:before {
 }
 only screen and (min-width: 768px) {
   width: calc((100% - 20px) / 2);
-}
-only screen and(min-width: 1158px) {
- 
 }*/
+
   width: calc((100% - 30px) / 3);
 }
 
