@@ -929,3 +929,26 @@ only screen and(min-width: 1158px) {
   background-repeat: no-repeat;
 }
 /* end modal team */
+/* ---- remove button */
+
+.movie-item:hover .remove-from-library {
+  display: block;
+}
+
+.remove-from-library {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-from-library:hover {
+  background-color: var(--button-hover);
+}
