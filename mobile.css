@@ -28,7 +28,6 @@
     display: flex;
     align-items: center;
     padding: 16px 30px;
-    /* height: 199px;  de la tablet*/
   }
   .switch {
     display: none;
@@ -47,8 +46,7 @@
   .library-link__btn {
     flex-wrap: nowrap;
   }
-  .search-form {
-  }
+
   .search-form__input {
     width: 100%;
     padding: 14px 120px;
@@ -58,6 +56,7 @@
     grid-template-columns: 1fr;
     align-content: center;
   } */
+
   .home-library-link {
     width: auto;
   }
@@ -78,18 +77,21 @@
     transform: translateX(-50%);
   }
   /* #library-movie-list {
-    grid-template-columns: 1fr;
-    align-content: center;
-  }
-  #movie-list {
+    display: flex;
+    flex-direction: column;
+        align-content: center;
+  } */
+
+  /* #movie-list {
     max-width: 618px;
     margin: auto;
     justify-content: center;
     position: relative;
-  }
-  .movie-item {
-    width: 240px;
   } */
+  .movie-item {
+    min-height: 440px;
+    margin-bottom: 20px;
+  }
 }
 
 /* -------------------MODAL TEAM-------------------------- */
@@ -102,10 +104,12 @@
     align-items: center;
     width: calc(100% / 1);
   }
-  /* @media (min-width: 768px) {
-    width: calc((100% - 20px) / 2);
-  } */
-  /* @media (min-width: 1158px) {
-    width: calc((100% - 30px) / 3);
-  } */
+}
+@media screen and (max-width: 767px) and (min-width: 320px) {
+  .team-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 }
