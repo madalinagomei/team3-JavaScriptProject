@@ -529,3 +529,13 @@ document.getElementById("footer-text").addEventListener("click", openModal);
 document.addEventListener("DOMContentLoaded", function () {
   closeModal();
 });
+
+
+
+
+// // it's up to you...
+// if (youWant() === true) {
+//   youCan();
+// } else {
+//   youCant();
+// }
