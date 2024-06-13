@@ -805,13 +805,6 @@ only screen and (min-width: 768px) {
   line-height: 1.17;
 }
 
-/* .card__face--back {
-  background-image: url("/images/madalina.JPG");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-} */
-
 /* Card rotation */
 
 .card-team {
@@ -918,6 +911,12 @@ only screen and (min-width: 768px) {
   background-image: url("./images/madalina.JPG");
   background-size: cover;
   background-repeat: no-repeat;
+}
+.card-back5 {
+  background-image: url("./images/madalina__back.JPG");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 /* end modal team */
 /* ---- remove button */
