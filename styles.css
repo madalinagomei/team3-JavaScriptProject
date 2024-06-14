@@ -5,7 +5,7 @@ $desktop: 1280px; */
   @media (min-width: 1158px) {} */
 
 :root {
-  --background-color: #F1F1F1;
+  --background-color: #f1f1f1;
   --text-color: #000;
   --header-text-color: #fff;
   --accent-color: #ff6b01;
@@ -21,7 +21,6 @@ $desktop: 1280px; */
   --time: 250ms;
   --function-animate: cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 * {
   margin: 0;
@@ -738,8 +737,8 @@ input:checked + .slider:before {
 }
 
 .no-movies {
-margin-left:110px;
-  }
+  margin-left: 110px;
+}
 
 /* ==========card style========= */
 .team-list {
@@ -910,7 +909,11 @@ only screen and (min-width: 768px) {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.card-back3 {
+  background-image: url("./images/back-pic.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .card-front4 {
   background-image: url("./images/cezara.JPG");
   background-size: cover;
@@ -918,7 +921,6 @@ only screen and (min-width: 768px) {
 }
 .card-back4 {
   background-image: url("./images/cezara-back.png");
-
 }
 
 .card-front5 {
