@@ -885,6 +885,11 @@ only screen and (min-width: 768px) {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.card-back1 {
+  background-image: url("./images/meme2.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .card-front2 {
   background-image: url("./images/sara.JPG");
   background-size: cover;
@@ -892,8 +897,9 @@ only screen and (min-width: 768px) {
 }
 .card-back2 {
   background-image: url("./images/meme.jpg");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 .card-front3 {
   background-image: url("./images/richard.JPG");
@@ -915,7 +921,7 @@ only screen and (min-width: 768px) {
 .card-back5 {
   background-image: url("./images/madalina__back.JPG");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center;
 }
 /* end modal team */
