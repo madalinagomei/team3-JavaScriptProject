@@ -5,7 +5,7 @@ $desktop: 1280px; */
   @media (min-width: 1158px) {} */
 
 :root {
-  --background-color: #f4f4f4;
+  --background-color: #F1F1F1;
   --text-color: #000;
   --header-text-color: #fff;
   --accent-color: #ff6b01;
@@ -21,6 +21,7 @@ $desktop: 1280px; */
   --time: 250ms;
   --function-animate: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
 
 * {
   margin: 0;
@@ -50,8 +51,6 @@ body {
   background-color: var(--background-color);
   font-size: 12px;
   color: var(--text-color);
-  margin: 0;
-  padding: 0;
   transition: background-color 0.3s, color 0.3s;
 }
 /* -------------------------header styles------------------------- */
@@ -518,6 +517,7 @@ input:checked + .slider:before {
   opacity: 0;
   transition: 0.5s;
   border: none;
+
   @media screen and (min-width: 768px) {
     right: 40px;
   }
@@ -737,6 +737,10 @@ input:checked + .slider:before {
   scale: 1.1;
 }
 
+.no-movies {
+margin-left:110px;
+  }
+
 /* ==========card style========= */
 .team-list {
   width: 100%;
@@ -911,6 +915,10 @@ only screen and (min-width: 768px) {
   background-image: url("./images/cezara.JPG");
   background-size: cover;
   background-repeat: no-repeat;
+}
+.card-back4 {
+  background-image: url("./images/cezara-back.png");
+
 }
 
 .card-front5 {

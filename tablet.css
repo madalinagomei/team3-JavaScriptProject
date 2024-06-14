@@ -28,14 +28,40 @@
   #home-link,
   #library-link {
     padding: 10px;
+    font-size: 10px;
   }
   .search-form__input {
     padding: 10px;
+    font-size: 10px;
   }
   .logo__header-icon {
     width: 40px;
     height: 40px;
   }
+
+
+  #movie-details {
+    width: 704px;
+    height: 552px;
+    padding: 40px 36px ;
+    
+  }
+  #movie-details img{
+    width: 264px;
+    height: 373px;
+  }
+
+
+  #movie-details h2 {
+    font-size: 20px;
+  }
+
+  .no-movies {
+    margin-bottom: 531px;
+      }
+    
+
+
   /* modal team */
 
   .modal-content {
