@@ -87,22 +87,10 @@ body {
   height: 316px;
 }
 
-/* .header__title {
-  color: #fff;
-  font-size: 64px;
-  font-weight: 500;
-} */
-
 .search-form__input {
   max-width: 320px;
   color: var(--text-color);
-  /* border: none;
-  border-bottom: 0.5px solid var(--header-text-color);
-  background: 0 0; */
-  /* outline: none; */
   font-size: 12px;
-  /* line-height: 1.14; */
-
   padding: 14px 24px;
   border-radius: 5px;
   border: none;
@@ -207,17 +195,11 @@ a {
 }
 
 #movie-list {
-  /* display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center; */
-
   grid-gap: 30px;
   grid-template-columns: repeat(3, 1fr);
   max-width: 618px;
   margin: auto;
   display: grid;
-
   justify-content: center;
   position: relative;
 }
@@ -231,7 +213,6 @@ a {
   cursor: pointer;
   padding: 5px;
   box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
-
   transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -350,7 +331,6 @@ footer {
   display: inline-block;
   width: 34px;
   height: 20px;
-  /* border: 3px solid var(--accent-color); */
   border-radius: 15px;
 }
 
@@ -467,7 +447,6 @@ input:checked + .slider:before {
   border-radius: 2px;
   padding-left: 5px;
   padding-right: 5px;
-  /* color: white; */
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -531,7 +510,6 @@ input:checked + .slider:before {
   bottom: 25px;
   visibility: visible;
   opacity: 1;
-  /* animation: var(--function-animate); */
 }
 #movie-details .button-group .add-to-watched {
   background-color: var(--accent-color);
@@ -638,11 +616,6 @@ input:checked + .slider:before {
   justify-content: center;
   position: relative;
 }
-
-/* .library-content {
-  width: auto;
-  flex-direction: row;
-} */
 
 .library-link__btn {
   padding: 14px 24px;
@@ -756,14 +729,6 @@ input:checked + .slider:before {
   width: 100%;
   border-radius: 8px;
   background-color: rgba(29, 29, 29, 0.7);
-  /* only screen and (max-width: 767px) {
-  flex-direction: column;
-  align-items: center;
-}
-only screen and (min-width: 768px) {
-  width: calc((100% - 20px) / 2);
-}*/
-
   width: calc((100% - 30px) / 3);
 }
 
