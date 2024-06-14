@@ -1,0 +1,164 @@
+/* Modal Styles */
+.modal {
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  max-width: 500px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.auth-tabs {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.auth-tab {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.auth-tab.active {
+  font-weight: bold;
+  border-bottom: 2px solid #333;
+}
+
+.auth-forms {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+.auth-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: #201e1e;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* +++++++user btn header */
+.auth-form button:hover {
+  background-color: var(--accent-color);
+}
+.auth-trigger {
+  position: relative;
+  cursor: pointer;
+}
+.header-maine__svg {
+  fill: var(--button-hover);
+}
+.header__right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* +++++++e+n+d+++++++ */
+.social-login {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-btn {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4285f4; /*  Google button color */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.social-btn#ios-login,
+.social-btn#ios-register {
+  background-color: var(--background-color); /* iOS button color */
+}
+
+.social-btn:hover {
+  opacity: 0.8;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .modal-content {
+  background-color: #000000;
+  color: #fff;
+  border-color: #060606;
+}
+
+body.dark-mode .close-button {
+  color: #fff;
+}
+
+body.dark-mode .auth-tab.active {
+  border-bottom: 2px solid #fff;
+}
+
+body.dark-mode .auth-form button {
+  background-color: #444;
+  color: #fff;
+}
+
+body.dark-mode .auth-form button:hover {
+  background-color: var(--accent-color);
+}
+
+body.dark-mode .social-btn {
+  background-color: #666;
+}
+
+body.dark-mode .social-btn:hover {
+  opacity: 0.9;
+}

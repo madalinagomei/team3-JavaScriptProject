@@ -283,8 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let library = JSON.parse(localStorage.getItem("watched")) || [];
 
-
-
     if (!library.some((libMovie) => libMovie.id === movie.id)) {
       //Notiflix.Notify.success("Movie not in watched library.");
     } else {
@@ -367,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
           removeFromLibrary(movie, "queue");
         }
       });
-    
+
     // close modal
     overlay.addEventListener("click", closeModal);
   }
@@ -416,58 +414,58 @@ document.addEventListener("DOMContentLoaded", () => {
     displayLibrary();
   });
 
-// Add to library
-function addToLibrary(movie, type) {
-  let library = JSON.parse(localStorage.getItem(type)) || [];
+  // Add to library
+  function addToLibrary(movie, type) {
+    let library = JSON.parse(localStorage.getItem(type)) || [];
 
-  if (!library.some((libMovie) => libMovie.id === movie.id)) {
-    library.push(movie);
-    localStorage.setItem(type, JSON.stringify(library));
-    Notiflix.Notify.success(`Successfully added movie to ${type}.`);
-  } else {
-    Notiflix.Notify.info(`Movie already in ${type}.`);
+    if (!library.some((libMovie) => libMovie.id === movie.id)) {
+      library.push(movie);
+      localStorage.setItem(type, JSON.stringify(library));
+      Notiflix.Notify.success(`Successfully added movie to ${type}.`);
+    } else {
+      Notiflix.Notify.info(`Movie already in ${type}.`);
+    }
+    displayMovieDetails(movie);
+    displayLibrary(); // Refresh the library display after adding
   }
-  displayMovieDetails(movie);
-  displayLibrary(); // Refresh the library display after adding
-}
 
-// Library
-function displayLibrary() {
-  libraryMovieList.innerHTML = "";
-  const library = JSON.parse(localStorage.getItem(currentLibraryView)) || [];
+  // Library
+  function displayLibrary() {
+    libraryMovieList.innerHTML = "";
+    const library = JSON.parse(localStorage.getItem(currentLibraryView)) || [];
 
-  if (library.length === 0) {
+    if (library.length === 0) {
       libraryMovieList.innerHTML = `<div class="no-movies"><img src="./images/no-movies.gif"></div>`;
       return;
-  }
+    }
 
-  library.forEach((movie) => {
-    const movieItem = document.createElement("div");
-    movieItem.classList.add("movie-item", "photo");
-    movieItem.innerHTML = `
+    library.forEach((movie) => {
+      const movieItem = document.createElement("div");
+      movieItem.classList.add("movie-item", "photo");
+      movieItem.innerHTML = `
       <img src="${imgBaseUrl + movie.poster_path}" alt="${movie.title}">
       <h3>${movie.title}</h3>
       <p>${movie.genre_ids.map((genreId) => genres[genreId]).join(", ")} | ${
-      movie.release_date ? movie.release_date.split("-")[0] : "N/A"
-    } </p>
+        movie.release_date ? movie.release_date.split("-")[0] : "N/A"
+      } </p>
       <button class="remove-from-library" data-id="${
         movie.id
       }" data-type="${currentLibraryView}">Remove</button>
     `;
 
-    movieItem
-      .querySelector(".remove-from-library")
-      .addEventListener("click", (e) => {
-        e.stopPropagation();
-        removeFromLibrary(movie, currentLibraryView);
-      });
+      movieItem
+        .querySelector(".remove-from-library")
+        .addEventListener("click", (e) => {
+          e.stopPropagation();
+          removeFromLibrary(movie, currentLibraryView);
+        });
 
-    movieItem.addEventListener("click", () => {
-      displayMovieDetails(movie);
+      movieItem.addEventListener("click", () => {
+        displayMovieDetails(movie);
+      });
+      libraryMovieList.appendChild(movieItem);
     });
-    libraryMovieList.appendChild(movieItem);
-  });
-}
+  }
 
   // remove
   function removeFromLibrary(movieToRemove, type) {
@@ -534,9 +532,47 @@ document.addEventListener("DOMContentLoaded", function () {
   closeModal();
 });
 
+// ++++++++-----------user modal auth+++++++---
+// Open and Close Modal
+const modal = document.getElementById("auth-modal");
+const closeButton = document.querySelector(".close-button");
+const authTabs = document.querySelectorAll(".auth-tab");
+const authForms = document.querySelectorAll(".auth-form");
 
+document.querySelectorAll(".auth-trigger").forEach((button) => {
+  button.addEventListener("click", () => {
+    modal.style.display = "flex";
+  });
+});
 
+closeButton.addEventListener("click", () => {
+  modal.style.display = "none";
+});
 
+window.addEventListener("click", (event) => {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+authTabs.forEach((tab) => {
+  tab.addEventListener("click", (event) => {
+    const target = event.target.getAttribute("data-target");
+
+    authTabs.forEach((t) => t.classList.remove("active"));
+    event.target.classList.add("active");
+
+    authForms.forEach((form) => {
+      if (form.id === target) {
+        form.classList.add("active");
+      } else {
+        form.classList.remove("active");
+      }
+    });
+  });
+});
+
+// +++++++++++++++-----------
 // // it's up to you...
 // if (youWant() === true) {
 //   youCan();

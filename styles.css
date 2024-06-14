@@ -358,7 +358,7 @@ footer {
   width: 12px;
   left: 4px;
   bottom: 4px;
-  background-color: var(--accent-color);
+  background-color: var(--button-hover);
   transition: 0.4s;
   border-radius: 50%;
 }
@@ -668,9 +668,7 @@ input:checked + .slider:before {
     rgb(248, 131, 6),
     rgb(178, 53, 4)
   );
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+
   text-align: center;
   width: 80%;
   max-height: 80%;
@@ -683,11 +681,12 @@ input:checked + .slider:before {
   border-radius: 20px;
   overflow: auto;
 }
-.close {
+.close,
+.close-button {
   display: flex;
   align-items: center;
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 50px;
   fill: var(--accent-color);
   color: var(--header-text-color);
   background-color: transparent;
