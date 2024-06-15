@@ -715,10 +715,9 @@ input:checked + .slider:before {
 
 /* ==========card style========= */
 .team-list {
-  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
 }
 
@@ -729,7 +728,6 @@ input:checked + .slider:before {
   width: 100%;
   border-radius: 8px;
   background-color: rgba(29, 29, 29, 0.7);
-  width: calc((100% - 30px) / 3);
 }
 
 .team-title {
@@ -886,6 +884,9 @@ input:checked + .slider:before {
 }
 .card-back4 {
   background-image: url("./images/cezara-back.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
 
 .card-front5 {
