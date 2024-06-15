@@ -4,11 +4,15 @@
 // import Notiflix from 'notiflix';
 
 document.addEventListener("DOMContentLoaded", function () {
-  const registrationIcon = document.getElementById("registration-icon");
-  const intervalTime = 10000;
+  const carouselItems = document.querySelectorAll(".hero-carousel-item");
+  let currentIndex = 0;
 
-  // Update the icon color at the specified interval
-  setInterval(updateIconColor, intervalTime);
+  function showNextImage() {
+    carouselItems[currentIndex].style.display = "none";
+    currentIndex = (currentIndex + 1) % carouselItems.length;
+    carouselItems[currentIndex].style.display = "block";
+  }
+  setInterval(showNextImage, intervalTime);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
