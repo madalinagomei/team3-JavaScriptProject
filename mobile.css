@@ -85,6 +85,9 @@
   .no-movies {
     margin: 0;
   }
+  .auth-trigger {
+    visibility: hidden;
+  }
 }
 
 /* -------------------MODAL TEAM-------------------------- */

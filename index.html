@@ -32,70 +32,36 @@
     />
   </head>
 
-  <body>
-    <!-- -------------------------Header HTML------------------------- -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="description" content="Welcome to Filmoteka! Join us in experiencing the ultimate movie adventure!" />
+  <meta name="keywords" content="HTML, CSS, JavaScript" />
+  <meta name="author" content="Team3" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filmoteka</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="images/video-camera.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="tablet.css" />
+  <link rel="stylesheet" href="mobile.css" />
+  <link rel="stylesheet" href="user-modal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/src/notiflix.min.css" />
+</head>
 
-    <div class="absolute">
-      <div class="hero-carousel">
-        <img
-          class="hero-carousel-item"
-          src="./images/bgd1.png"
-          alt=""
-          data-carousel-item
-        />
-        <img
-          class="hero-carousel-item"
-          src="./images/bgd2.png"
-          alt=""
-          data-carousel-item
-        />
-        <img
-          class="hero-carousel-item"
-          src="./images/bgd3.png"
-          alt=""
-          data-carousel-item
-        />
-      </div>
-      <div class="hero-overlay">
-        <div class="nav">
-          <div class="search">
-            <form class="search-form">
-              <input
-                class="search-form__input"
-                type="text"
-                id="search-input"
-                name="searchQuery"
-                placeholder="Movie search"
-                aria-label="movie search"
-              />
-              <svg
-                class="svg-search"
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
-                <path
-                  d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
-                  stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M14 14.0001L11.1 11.1001"
-                  stroke="black"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </form>
-          </div>
+<body>
+  <!-- -------------------------Header HTML------------------------- -->
 
-          <div class="home-library-link">
-            <button class="home-link__btn" id="home-link">
-              <a href="#">Home</a>
-            </button>
+  <div class="absolute">
+    <div class="hero-carousel">
+      <img class="hero-carousel-item" src="./images/bgd1.png" alt="" data-carousel-item />
+      <img class="hero-carousel-item" src="./images/bgd2.png" alt="" data-carousel-item />
+      <img class="hero-carousel-item" src="./images/bgd3.png" alt="" data-carousel-item />
+    </div>
 
             <button class="library-link__btn" id="library-link">
               <a href="#">My Library</a>
@@ -103,6 +69,40 @@
           </div>
         </div>
 
+    <div class="hero-overlay">
+      <div class="nav">
+        <div class="search">
+          <form class="search-form">
+            <input class="search-form__input" type="text" id="search-input" name="searchQuery"
+              placeholder="Movie search" aria-label="movie search" />
+            <svg class="svg-search" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+              fill="none">
+              <path
+                d="M7.33333 12.6667C10.2789 12.6667 12.6667 10.2789 12.6667 7.33333C12.6667 4.38781 10.2789 2 7.33333 2C4.38781 2 2 4.38781 2 7.33333C2 10.2789 4.38781 12.6667 7.33333 12.6667Z"
+                stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M14 14.0001L11.1 11.1001" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </form>
+        </div>
+
+        <div class="home-library-link">
+          <button class="home-link__btn" id="home-link">
+            <a href="#">Home</a>
+          </button>
+
+          <button class="library-link__btn" id="library-link">
+            <a href="#">My Library</a>
+          </button>
+        </div>
+      </div>
+
+      <a class="logo__link link" href="index.html" previewlistener="true">
+        <svg class="logo__header-icon">
+          <use href="./images/icons.svg#icon-filmoteka"></use>
+        </svg>
+        <span class="logo__title">Filmoteka</span>
+      </a>
+      <div class="header_dreapta">
         <label class="switch">
           <input type="checkbox" id="theme-switch" />
           <span class="slider round"></span>
@@ -119,49 +119,47 @@
         </div> -->
       </div>
     </div>
-    <!-- --------------------------------------------------------------------------- -->
 
-    <main id="main-content">
-      <section id="movie-list">
-        <!-- movie items insert here -->
-      </section>
+  </div>
+  <!-- --------------------------------------------------------------------------- -->
 
-      <!-- Pagination buttons -->
-      <div id="pagination" class="pagination">
-        <!-- Pagination buttons will be inserted here dynamically by JavaScript -->
-      </div>
+  <main id="main-content">
+    <section id="movie-list">
+      <!-- movie items insert here -->
+    </section>
 
-      <!-- upward button -->
-      <button
-        class="upward active"
-        id="upward"
-        onclick="scrollToTop()"
-      ></button>
-    </main>
-
-    <main id="library-content" class="hidden">
-      <div class="library-content__buttons">
-        <button class="library-link__btn" id="watched-btn">Watched</button>
-        <button class="library-link__btn" id="queue-btn">Queue</button>
-      </div>
-      <div id="library-movie-list"></div>
-    </main>
-
-    <div id="movie-details" class="hidden">
-      <!-- movie details insert here -->
+    <!-- Pagination buttons -->
+    <div id="pagination" class="pagination">
+      <!-- Pagination buttons will be inserted here dynamically by JavaScript -->
     </div>
-    <div id="overlay" class="hidden"></div>
 
-    <footer>
-      <p class="footer-text">
-        &copy; 2024 | All Rights Reserved | Developed with <span>❤️</span
-        ><button id="footer-text" type="button" class="footer-item">
-          Team 3
-        </button>
-      </p>
-    </footer>
+    <!-- upward button -->
+    <button class="upward active" id="upward" onclick="scrollToTop()"></button>
+  </main>
 
-    <!-- ================******modal team *******
+  <main id="library-content" class="hidden">
+    <div class="library-content__buttons">
+      <button class="library-link__btn" id="watched-btn">Watched</button>
+      <button class="library-link__btn" id="queue-btn">Queue</button>
+    </div>
+    <div id="library-movie-list"></div>
+  </main>
+
+  <div id="movie-details" class="hidden">
+    <!-- movie details insert here -->
+  </div>
+  <div id="overlay" class="hidden"></div>
+
+  <footer>
+    <p class="footer-text">
+      &copy; 2024 | All Rights Reserved | Developed with <span>❤️</span><button id="footer-text" type="button"
+        class="footer-item">
+        Team 3
+      </button>
+    </p>
+  </footer>
+
+  <!-- ================******modal team *******
      ===========================*********************===========-->
     <div id="myModal" class="modal">
       <div class="modal-content">
@@ -460,4 +458,288 @@
       src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"
     ></script>
   </body>
+</html>
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 class="team-title">Our team</h2>
+      <ul class="team-list list">
+        <li class="team-item">
+          <div class="card-team">
+            <div class="card__face card__face--front card-front1"></div>
+            <div class="card__face card__face--back card-back1"></div>
+          </div>
+          <div class="team-block">
+            <h3 class="team-name">Stefan</h3>
+            <h4 class="team-position">Developer</h4>
+            <p class="team-functional">
+              •JavaScript magic - added notiflix updates whenever movies are
+              added to lists General layout fixes Button functionality <br />
+              • Styling Miscellaneous style improvements Did the math and
+              changed the code so there would only be 9 movies displayed on
+              the page
+            </p>
+            <ul class="social-list">
+              <li class="social-list__item list">
+                <a href="mailto://focastefan13@gmail.com" target="blank" class="social-list__link link"
+                  aria-label="email">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-mail2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://github.com/Merlyin" target="blank" class="social-list__link link" aria-label="github">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-github"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://www.linkedin.com/in/stefan-mihail-foca-236875173/" target="blank"
+                  class="social-list__link link" aria-label="linkedin">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="team-item">
+          <div class="card-team">
+            <div class="card__face card__face--front card-front2"></div>
+            <div class="card__face card__face--back card-back2"></div>
+          </div>
+          <div class="team-block">
+            <h3 class="team-name">Sara</h3>
+            <h4 class="team-position">Developer</h4>
+            <p class="team-functional">
+              • Magic JS in adding a new page without an extra HTML<br />
+              • Added button functionality for adding movies to "My
+              Library"<br />
+              • Implemented hover functionality for removing movies from "My
+              Library" (Cezara's idea), and ensured the dark-mode button works
+              seamlessly<br />• General layout styling adjustments
+            </p>
+            <ul class="social-list">
+              <li class="social-list__item list">
+                <a href="mailto://sarasmarandoiu@gmail.com" target="blank" class="social-list__link link"
+                  aria-label="email">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-mail2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://github.com/SaraSmarandoiu" target="blank" class="social-list__link link"
+                  aria-label="github">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-github"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://www.linkedin.com/in/sara-angelica-smarandoiu-9156a2267/" target="blank"
+                  class="social-list__link link" aria-label="linkedin">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="team-item">
+          <div class="card-team">
+            <div class="card__face card__face--front card-front3"></div>
+            <div class="card__face card__face--back card-back3"></div>
+          </div>
+          <div class="team-block">
+            <h3 class="team-name">Richard</h3>
+            <h4 class="team-position">Developer</h4>
+            <p class="team-functional">
+              • Developed pagination and scroll features using HTML, CSS, and
+              JavaScript<br>• Created and styled a user-friendly page
+              counter/selector, enhancing content navigation and overall user
+              experience.<br>• Added styling for the user registration icon modal.
+            </p>
+            <ul class="social-list">
+              <li class="social-list__item list">
+                <a href="mailto:purdel_richard@yahoo.com" target="blank" class="social-list__link link"
+                  aria-label="email">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-mail2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://github.com/Ridl123" target="blank" class="social-list__link link" aria-label="github">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-github"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://www.linkedin.com/in/richard-iulian-purdel-52b2142b5/" target="blank"
+                  class="social-list__link link" aria-label="linkedin">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="team-item">
+          <div class="card-team">
+            <div class="card__face card__face--front card-front4"></div>
+            <div class="card__face card__face--back card-back4"></div>
+          </div>
+          <div class="team-block">
+            <h3 class="team-name">Cezara</h3>
+            <h4 class="team-position">Scrum Master + Developer</h4>
+            <p class="team-functional">
+              •Laid out development stages and divided tasks to optimize team
+              effort and contribution <br />
+              •Designed header style and carousel <br />
+              •Implemented CSS styling for movie cards and movie modal
+              windows<br />
+              •Styled empty library object lists<br />
+              •Ensured mobile and tablet responsiveness<br />
+              •Contributed design ideas and UI concepts<br />
+              •Identified and corrected issues throughout development<br />
+            </p>
+            <ul class="social-list">
+              <li class="social-list__item list">
+                <a href="mailto://cezara.com" target="blank" class="social-list__link link" aria-label="email">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-mail2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://github.com/A-Cezara" target="blank" class="social-list__link link" aria-label="github">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-github"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="www.linkedin.com/in/cezara-alexandra" target="blank" class="social-list__link link"
+                  aria-label="linkedin">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li class="team-item">
+          <div class="card-team">
+            <div class="card__face card__face--front card-front5"></div>
+            <div class="card__face card__face--back card-back5"></div>
+          </div>
+          <div class="team-block">
+            <h3 class="team-name">Madalina</h3>
+            <h4 class="team-position">Team lead + Developer</h4>
+            <p class="team-functional">
+              • Prepared the foundational structure of the site by coding the
+              HTML and parts of the CSS and JavaScript, including adding
+              APIs<br />
+              • Implementing dark mode, a scroll-up button <br />
+              • Modal for movie and with the team members <br />
+              • Hero section and modal for mobile responsiveness <br />
+              • Coordinated the team, facilitating communication between
+              members and ensuring progress throughout the project.
+            </p>
+            <ul class="social-list">
+              <li class="social-list__item list">
+                <a href="mailto:madalinagomei@gmail.com" target="blank" class="social-list__link link"
+                  aria-label="email">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-mail2"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://github.com/madalinagomei" target="blank" class="social-list__link link"
+                  aria-label="github">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-github"></use>
+                  </svg>
+                </a>
+              </li>
+              <li class="social-list__item list">
+                <a href="https://www.linkedin.com/in/madalina-gomei/" target="blank" class="social-list__link link"
+                  aria-label="linkedin">
+                  <svg class="social-list__icon">
+                    <use href="./images/icons.svg#icon-linkedin"></use>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- ========================== -->
+  <!-- +++++++++++++++++++user modal+++++++++++++++++++ -->
+  <!-- Modal for Authentication -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-button">&times;</span>
+      <div class="auth-tabs">
+        <button class="auth-tab active" data-target="login">Log In</button>
+        <button class="auth-tab" data-target="register">Register</button>
+      </div>
+      <div class="auth-forms">
+        <!-- Log In Form -->
+        <div id="login" class="auth-form active">
+          <form id="login-form">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" name="email" required />
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" name="password" required />
+            <button type="submit">Log In</button>
+          </form>
+          <div class="social-login">
+            <button id="google-login" class="social-btn">
+              Log In with Google
+            </button>
+            <button id="ios-login" class="social-btn">Log In with iOS</button>
+          </div>
+        </div>
+        <!-- Register Form -->
+        <div id="register" class="auth-form">
+          <form id="register-form">
+            <label for="register-email">Username:</label>
+            <input type="username" id="register-username" name="username" required />
+            <label for="register-email">Email:</label>
+            <input type="email" id="register-email" name="email" required />
+
+            <label for="register-password">Password:</label>
+            <input type="password" id="register-password" name="password" required />
+            <button type="submit">Register</button>
+          </form>
+          <div class="social-login">
+            <button id="google-register" class="social-btn">
+              Register with Google
+            </button>
+            <button id="ios-register" class="social-btn">
+              Register with iOS
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- --------------------+++++++++++++++++++++++++++++++++ -->
+  <script src="script.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/notiflix@3.2.7/dist/notiflix-aio-3.2.7.min.js"></script>
+</body>
+
 </html>
