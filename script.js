@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     currentIndex = (currentIndex + 1) % carouselItems.length;
     carouselItems[currentIndex].style.display = "block";
   }
-  setInterval(showNextImage, intervalTime);
+  setInterval(showNextImage, 3000);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!inWatched) {
           addToLibrary(movie, "watched");
         } else {
-          removeFromLibrary(movie, "watched");
+          removeFromLibrary(movie, "watched", true);
         }
       });
 
@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!inQueue) {
           addToLibrary(movie, "queue");
         } else {
-          removeFromLibrary(movie, "queue");
+          removeFromLibrary(movie, "queue", true);
         }
       });
 
@@ -472,12 +472,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // remove
-  function removeFromLibrary(movieToRemove, type) {
+  function removeFromLibrary(movieToRemove, type, toDisplayMovieDetails = false) {
     let library = JSON.parse(localStorage.getItem(type)) || [];
     library = library.filter((movie) => movie.id !== movieToRemove.id);
     localStorage.setItem(type, JSON.stringify(library));
     Notiflix.Notify.success("Successfully removed movie from library.");
-    // displayMovieDetails(movieToRemove);
+    if(toDisplayMovieDetails) {
+      displayMovieDetails(movieToRemove);
+    } 
     displayLibrary();
   }
 });
