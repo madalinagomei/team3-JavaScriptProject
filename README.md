@@ -1,6 +1,5 @@
 Hey there 👋
 
-Here you can find the project for the “Filmoteka” website. We are students from a group called “Codul Schrödinger” at the GOIT Academy. 🚀
 
 After completing the JavaScript course, we wanted to reinforce the 📌 knowledge we gained and implement the 📃 final project within two weeks.
 
@@ -11,12 +10,12 @@ After completing the JavaScript course, we wanted to reinforce the 📌 knowledg
 👨‍🎓 The project involved five people, as follows:
 
 Team Leader and Developer: Madalina Gomei
-Scrum Master and Developer: Cezara Alexandra Firu
+Scrum Master and Developer: Cezara-Alexandra Firu
 Developer: Richard-Iulian Prudel
-Developer: Sara Smarandoiu
+Developer: Sara Angelica Smarandoiu
 Developer: Stefan Foca
 
-Clicking on the “team 3” text in the footer reveals a modal with information about team members and details about their contributions to the project.
+Clicking on the “Team 3” text in the footer reveals a modal with information about team members and details about their contributions to the project.
 
 💻 Our goal was to create a website that matches the desired appearance and fulfills all assigned tasks from the technical specifications. The main purpose of the site is to display movies and view their IMDb ratings and info, search for specific films, and organize the user’s library for managing favorite and queue lists, as well as providing login functionality.
 
